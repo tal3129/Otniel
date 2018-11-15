@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_a"
+            android:icon="@drawable/a"
+            android:title="שיעור א" />
+        <item
+            android:id="@+id/nav_b"
+            android:icon="@drawable/b"
+            android:title="שיעור ב" />
+        <item
+            android:id="@+id/nav_c"
+            android:icon="@drawable/c"
+            android:title="שיעור ג" />
+        <item
+            android:id="@+id/nav_d"
+            android:icon="@drawable/d"
+            android:title="שיעור ד" />
+        <item
+            android:id="@+id/nav_e"
+            android:icon="@drawable/e"
+            android:title="שיעור ה" />
+        <item
+            android:id="@+id/nav_f"
+            android:icon="@drawable/f"
+            android:title="שיעור ו ומעלה" />
+        <item
+            android:id="@+id/nav_g"
+            android:icon="@drawable/g"
+            android:title="צוות הישיבה" />
+        <item
+            android:id="@+id/nav_h"
+            android:icon="@drawable/h"
+            android:title="כולם" />
+    </group>
+
+    <item android:id="@+id/haiGroup" android:title="חי בהם">
+        <menu>
+            <item
+                android:id="@+id/nav_9"
+                android:title="צוות"/>
+            <item
+                android:id="@+id/nav_10"
+                android:title="שבת ירושלים"/>
+            <item
+                android:id="@+id/nav_11"
+                android:title="שבת מודיעין"/>
+            <item
+                android:id="@+id/nav_12"
+                android:title="שבת גוש עציון"/>
+            <item
+                android:id="@+id/nav_13"
+                android:title="מקוואות"/>
+        </menu>
+    </item>
+
+</menu>

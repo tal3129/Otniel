@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_sort" android:title="מיין לפי"
+        android:orderInCategory="100" />
+    <item android:id="@+id/action_addAll" android:title="הוסף את כולם לאנשי קשר"
+        android:orderInCategory="100" />
+    <item android:id="@+id/action_emailAll" android:title="שלח מייל לכולם"
+        android:orderInCategory="100" />
+
+    <item android:id="@+id/search"
+        android:title="@string/search_title"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+</menu>

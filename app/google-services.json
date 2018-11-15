@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1083226564306",
+    "firebase_url": "https://otniel-beb6c.firebaseio.com",
+    "project_id": "otniel-beb6c",
+    "storage_bucket": "otniel-beb6c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083226564306:android:cf3862d5052204ed",
+        "android_client_info": {
+          "package_name": "com.otniel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083226564306-mqqu94i6pmg4khoq177lpsf81sgqobve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANnc9LjO2YLljRFnn3hAHaZniqeqIXgiA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

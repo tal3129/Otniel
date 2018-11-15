@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_add_contact" android:title="הוסף לאנשי קשר"
+        android:orderInCategory="100"/>
+    <item android:id="@+id/action_call" android:title="התקשר"
+        android:orderInCategory="100"  />
+    <item android:id="@+id/action_whatsapp" android:title="שלח הודעת ווטסאפ"
+        android:orderInCategory="100" />
+    <item android:id="@+id/action_share" android:title="שתף איש קשר"
+        android:orderInCategory="100" />
+    <item android:id="@+id/action_email" android:title="שלח אימייל"
+        android:orderInCategory="100" />
+</menu>
