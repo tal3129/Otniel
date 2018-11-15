@@ -1,4 +1,4 @@
-package com.habusha.amihai.otniel;
+package com.otniel;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.habusha.amihai.otniel.Activities.MainActivity;
+import com.otniel.Activities.MainActivity;
 
 import java.util.ArrayList;
 

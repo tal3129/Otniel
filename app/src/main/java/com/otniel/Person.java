@@ -1,4 +1,4 @@
-package com.habusha.amihai.otniel;
+package com.otniel;
 
 import android.app.Activity;
 import android.content.ContentProviderOperation;
@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.habusha.amihai.otniel.Activities.MainActivity;
+import com.otniel.Activities.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;

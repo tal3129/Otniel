@@ -1,4 +1,4 @@
-package com.habusha.amihai.otniel;
+package com.otniel;
 
 import org.junit.Test;
 

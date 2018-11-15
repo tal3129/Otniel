@@ -1,4 +1,4 @@
-package com.habusha.amihai.otniel;
+package com.otniel;
 
 import android.Manifest;
 import android.app.Activity;

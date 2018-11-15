@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1083226564306-4aljcsnc0r7vbt1mug4l4v83ckd3es4h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.otniel",
+            "certificate_hash": "70b00816da3b1244696634d2cfd4dd8651e513b1"
+          }
+        },
+        {
           "client_id": "1083226564306-mqqu94i6pmg4khoq177lpsf81sgqobve.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083226564306-mqqu94i6pmg4khoq177lpsf81sgqobve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

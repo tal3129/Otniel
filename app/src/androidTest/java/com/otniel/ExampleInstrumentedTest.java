@@ -1,4 +1,4 @@
-package com.habusha.amihai.otniel;
+package com.otniel;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.habusha.amihai.otniel", appContext.getPackageName());
+        assertEquals("com.otniel", appContext.getPackageName());
     }
 }

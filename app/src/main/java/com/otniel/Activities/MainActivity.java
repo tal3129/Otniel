@@ -1,4 +1,4 @@
-package com.habusha.amihai.otniel.Activities;
+package com.otniel.Activities;
 
 import android.app.AlertDialog;
 import android.app.NotificationManager;
@@ -45,10 +45,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.habusha.amihai.otniel.AskForPermissions;
-import com.habusha.amihai.otniel.PeopleAdapter;
-import com.habusha.amihai.otniel.Person;
-import com.habusha.amihai.otniel.R;
+import com.otniel.AskForPermissions;
+import com.otniel.PeopleAdapter;
+import com.otniel.Person;
+import com.otniel.R;
 import com.nullwire.trace.ExceptionHandler;
 
 import org.json.JSONArray;
