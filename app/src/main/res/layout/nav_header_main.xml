@@ -34,6 +34,6 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="נוצר על ידי עמיחי חבושה" />
+        android:text="נוצר על ידי עמיחי חבושה, טל לוי ורועי וייס" />
 
 </LinearLayout>
