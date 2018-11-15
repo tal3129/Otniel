@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Otniel.iml" filepath="$PROJECT_DIR$/Otniel.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/otniel.iml" filepath="$PROJECT_DIR$/otniel.iml" />
     </modules>
   </component>
 </project>
