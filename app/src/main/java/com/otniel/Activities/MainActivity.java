@@ -8,6 +8,7 @@ import android.content.ContentProviderResult;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
@@ -41,6 +42,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.otniel.AskForPermissions;
 import com.otniel.PeopleAdapter;
 import com.otniel.Person;
@@ -69,39 +71,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ArrayList<Person> people = new ArrayList<>();
     ArrayList<Person> currentPeople = new ArrayList<>();
 
+    ArrayList<Person> databasePeople = new ArrayList<>();
+    ArrayList<Person> devicePeople = new ArrayList<>();
     public static String getQuery() {
         return query;
-    }
-
-    public static String readFile(AssetManager mgr, String path) {
-        String contents = "";
-        InputStream is = null;
-        BufferedReader reader = null;
-        try {
-            is = mgr.open(path);
-            reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-            contents = reader.readLine();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                contents += '\n' + line;
-            }
-        } catch (final Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException ignored) {
-                }
-            }
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException ignored) {
-                }
-            }
-        }
-        return contents;
     }
 
     public static Bitmap readImageFile(AssetManager mgr, String path, boolean tryJPG) {
@@ -144,20 +117,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Person.context = this;
 
-        String json = readFile(getAssets(), "people.json");
-        try {
-            JSONArray jsonArray = new JSONObject(json).getJSONArray("People");
-            for (int i = 0; i < jsonArray.length(); i++) {
-                final Person person = new Person(jsonArray.getJSONObject(i));
+        // getting the people from the device;
+        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+        String appDataJson = sp.getString("appDataJson", "NO_DATA");
+        Gson gson = new Gson();
+        if (!appDataJson.equals("NO_DATA"))
+            devicePeople = gson.fromJson(appDataJson, AppData.class).people;
 
-
-                people.add(person);
-            }
-            Collections.sort(people);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        people = devicePeople;
         currentPeople.addAll(people);
         changeIndex(8);
     }
