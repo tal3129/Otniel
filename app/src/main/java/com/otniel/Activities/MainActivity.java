@@ -8,7 +8,6 @@ import android.content.ContentProviderResult;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
@@ -42,12 +41,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 import com.otniel.AskForPermissions;
 import com.otniel.PeopleAdapter;
 import com.otniel.Person;
@@ -67,41 +60,94 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static String query="";
     public static boolean call = true;
-    public static HashMap<Integer,String> lookupKeys = new HashMap<>();
-
-    int currentIndex=8;
+    public static HashMap<Integer, String> lookupKeys = new HashMap<>();
+    private static String query = "";
+    int currentIndex = 8;
     ArrayList<Person> people = new ArrayList<>();
     ArrayList<Person> currentPeople = new ArrayList<>();
 
+    public static String getQuery() {
+        return query;
+    }
+
+    public static String readFile(AssetManager mgr, String path) {
+        String contents = "";
+        InputStream is = null;
+        BufferedReader reader = null;
+        try {
+            is = mgr.open(path);
+            reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            contents = reader.readLine();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                contents += '\n' + line;
+            }
+        } catch (final Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException ignored) {
+                }
+            }
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException ignored) {
+                }
+            }
+        }
+        return contents;
+    }
+
+    public static Bitmap readImageFile(AssetManager mgr, String path, boolean tryJPG) {
+        Bitmap img = null;
+        InputStream is = null;
+        try {
+            is = mgr.open(path);
+            img = BitmapFactory.decodeStream(is);
+        } catch (FileNotFoundException fnfE) {
+            if (tryJPG)
+                img = readImageFile(mgr, path.replace("jpg", "JPG"), false);
+        } catch (final Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException ignored) {
+                }
+            }
+        }
+        return img;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         Person.context = this;
 
-        String json=readFile(getAssets(), "people.json");
+        String json = readFile(getAssets(), "people.json");
         try {
             JSONArray jsonArray = new JSONObject(json).getJSONArray("People");
-            for (int i=0;i<jsonArray.length();i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
                 final Person person = new Person(jsonArray.getJSONObject(i));
 
 
@@ -140,90 +186,36 @@ public class MainActivity extends AppCompatActivity
         Person.deleteContactAuto(lookupKeys.get(requestCode));
     }
 
-    public static String getQuery() {
-        return query;
-    }
-
-    private void changeIndex(int index){
+    private void changeIndex(int index) {
         currentIndex = index;
         updatePeopleList();
         updateList();
     }
-    private void updatePeopleList(){
+
+    private void updatePeopleList() {
 
         currentPeople.clear();
 
-        for (Person person : people){
-            if ((currentIndex == 8 && person.getClassIndex() < 8)  || currentIndex == person.getClassIndex() ||
-                    (currentIndex == 14 && person.getClassIndex() < 14 && person.getClassIndex() > 8)){
-                if (query.equals("") || person.getName().contains(query) || person.getPhonenumber().replace("-","").contains(query)){
+        for (Person person : people) {
+            if ((currentIndex == 8 && person.getClassIndex() < 8) || currentIndex == person.getClassIndex() ||
+                    (currentIndex == 14 && person.getClassIndex() < 14 && person.getClassIndex() > 8)) {
+                if (query.equals("") || person.getName().contains(query) || person.getPhonenumber().replace("-", "").contains(query)) {
                     currentPeople.add(person);
                 }
             }
         }
 
     }
-    private void updateList(){
+
+    private void updateList() {
         Collections.sort(currentPeople);
         final PeopleAdapter adapter = new PeopleAdapter(this, currentPeople);
-        ((ListView)findViewById(R.id.people_list)).setAdapter(adapter);
-    }
-
-    public static String readFile(AssetManager mgr, String path) {
-        String contents = "";
-        InputStream is = null;
-        BufferedReader reader = null;
-        try {
-            is = mgr.open(path);
-            reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-            contents = reader.readLine();
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                contents += '\n' + line;
-            }
-        } catch (final Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException ignored) {
-                }
-            }
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException ignored) {
-                }
-            }
-        }
-        return contents;
-    }
-    public static Bitmap readImageFile(AssetManager mgr, String path, boolean tryJPG) {
-        Bitmap img = null;
-        InputStream is = null;
-        try {
-            is = mgr.open(path);
-            img = BitmapFactory.decodeStream(is);
-        }catch (FileNotFoundException fnfE) {
-            if (tryJPG)
-                img = readImageFile(mgr, path.replace("jpg", "JPG"), false);
-        } catch (final Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException ignored) {
-                }
-            }
-        }
-        return img;
+        ((ListView) findViewById(R.id.people_list)).setAdapter(adapter);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -231,12 +223,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void openSortByAlertView(){
+    private void openSortByAlertView() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.sortby_dialog, null);
-        RadioGroup radioGroup = ((RadioGroup)dialogView.findViewById(R.id.radio_group));
+        RadioGroup radioGroup = ((RadioGroup) dialogView.findViewById(R.id.radio_group));
 
         final RadioButton[] btns = new RadioButton[Person.SortBy.values().length];
         btns[0] = new RadioButton(this);
@@ -251,7 +243,7 @@ public class MainActivity extends AppCompatActivity
             radioGroup.addView(btn);
         }
         builder.setView(dialogView);
-        switch (Person.sortBy){
+        switch (Person.sortBy) {
             case NAME_A_TO_Z:
                 btns[0].setChecked(true);
                 break;
@@ -265,15 +257,12 @@ public class MainActivity extends AppCompatActivity
                 btns[3].setChecked(true);
                 break;
         }
-        builder.setPositiveButton("אישור", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                for (int i=0;i<btns.length;i++) {
-                    if (btns[i].isChecked()) {
-                        Person.sortBy = Person.SortBy.getSortBy(i);
-                        updateList();
-                        break;
-                    }
+        builder.setPositiveButton("אישור", (dialog, which) -> {
+            for (int i = 0; i < btns.length; i++) {
+                if (btns[i].isChecked()) {
+                    Person.sortBy = Person.SortBy.getSortBy(i);
+                    updateList();
+                    break;
                 }
             }
         });
@@ -297,61 +286,58 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_sort){
+        if (id == R.id.action_sort) {
             openSortByAlertView();
-        }else if (id == R.id.action_addAll){
-            if (AskForPermissions.checkPermission(this,AskForPermissions.contacts)){
+        } else if (id == R.id.action_addAll) {
+            if (AskForPermissions.checkPermission(this, AskForPermissions.contacts)) {
 
                 showAddAllDialog();
 
-            }else{
+            } else {
                 MainActivity.call = true;
                 AskForPermissions.requestPermission(this, AskForPermissions.contacts, AskForPermissions.contactsIndx);
             }
-        }else if (id == R.id.action_emailAll){
+        } else if (id == R.id.action_emailAll) {
             emailAll();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void emailAll(){
+    private void emailAll() {
         ArrayList<String> emailAddress = new ArrayList<>();
-        for (Person person : currentPeople){
-            if (!person.getEmail().equals("")){
+        for (Person person : currentPeople) {
+            if (!person.getEmail().equals("")) {
                 emailAddress.add(person.getEmail());
             }
         }
-        if (emailAddress.size() > 0){
+        if (emailAddress.size() > 0) {
             Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
             emailIntent.setType("vnd.android.cursor.item/email");
             String[] s = new String[]{};
             emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, emailAddress.toArray(s));
             emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "חי בהם");
             startActivity(emailIntent);
-        }else{
+        } else {
             Toast.makeText(this, "לא נמצאו אימיילים ברשימת האנשים הנוכחית", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void showAddAllDialog(){
+    private void showAddAllDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.add_all_dialog, null);
-        ((CheckBox)dialogView.findViewById(R.id.checkBox)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    dialogView.findViewById(R.id.stamp_text).setEnabled(true);
-                    dialogView.findViewById(R.id.example).setEnabled(true);
-                }else{
-                    dialogView.findViewById(R.id.stamp_text).setEnabled(false);
-                    dialogView.findViewById(R.id.example).setEnabled(false);
-                }
+        ((CheckBox) dialogView.findViewById(R.id.checkBox)).setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                dialogView.findViewById(R.id.stamp_text).setEnabled(true);
+                dialogView.findViewById(R.id.example).setEnabled(true);
+            } else {
+                dialogView.findViewById(R.id.stamp_text).setEnabled(false);
+                dialogView.findViewById(R.id.example).setEnabled(false);
             }
         });
 
-        ((EditText)dialogView.findViewById(R.id.stamp_text)).addTextChangedListener(new TextWatcher() {
+        ((EditText) dialogView.findViewById(R.id.stamp_text)).addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -364,35 +350,23 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void afterTextChanged(Editable s) {
-                ((TextView)dialogView.findViewById(R.id.example)).setText("לדוגמא: פלוני אלמוני (" + s.toString() + ")");
+                ((TextView) dialogView.findViewById(R.id.example)).setText("לדוגמא: פלוני אלמוני (" + s.toString() + ")");
             }
         });
 
         builder.setTitle("הוסף תגים");
         builder.setView(dialogView);
-        builder.setPositiveButton("אישור", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (((CheckBox)dialogView.findViewById(R.id.checkBox)).isChecked()){
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            addAllPeople(((EditText)dialogView.findViewById(R.id.stamp_text)).getText().toString());
-                        }
-                    }).start();
-                }else{
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            addAllPeople("");
-                        }
-                    }).start();
-                }
+        builder.setPositiveButton("אישור", (dialog, which) -> {
+            if (((CheckBox) dialogView.findViewById(R.id.checkBox)).isChecked()) {
+                new Thread(() -> addAllPeople(((EditText) dialogView.findViewById(R.id.stamp_text)).getText().toString())).start();
+            } else {
+                new Thread(() -> addAllPeople("")).start();
             }
         });
         builder.create().show();
     }
-    private void addAllPeople(String stamp){
+
+    private void addAllPeople(String stamp) {
         NotificationManager mNotifyManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
@@ -400,23 +374,23 @@ public class MainActivity extends AppCompatActivity
                 .setSmallIcon(R.drawable.noti_otniel);
 
         int count = 0;
-        Person rndPerson = currentPeople.get((int)(Math.random()*currentPeople.size()));
-        int notiIndex = Integer.parseInt(rndPerson.getPhonenumber().substring(rndPerson.getPhonenumber().length()-3));
+        Person rndPerson = currentPeople.get((int) (Math.random() * currentPeople.size()));
+        int notiIndex = Integer.parseInt(rndPerson.getPhonenumber().substring(rndPerson.getPhonenumber().length() - 3));
 
         String tag = stamp.equals("") ? "" : "(" + stamp + ")";
 
         ArrayList<Person> peopleToAdd = new ArrayList<>();
         peopleToAdd.addAll(currentPeople);
 
-        for (Person person : peopleToAdd){
+        for (Person person : peopleToAdd) {
             count++;
 
-            mBuilder.setProgress(currentPeople.size(), count-1, false)
+            mBuilder.setProgress(currentPeople.size(), count - 1, false)
                     .setContentText(count + " of " + currentPeople.size());
             mNotifyManager.notify(notiIndex, mBuilder.build());
 
-            boolean exist = contactExists(this, person.getPhonenumber().replace("-",""));
-            if (!exist){
+            boolean exist = contactExists(this, person.getPhonenumber().replace("-", ""));
+            if (!exist) {
                 addContact(person, tag);
             }
         }
@@ -426,8 +400,9 @@ public class MainActivity extends AppCompatActivity
                 .setContentText(currentPeople.size() + " of " + currentPeople.size());
         mNotifyManager.notify(notiIndex, mBuilder.build());
     }
+
     private void addContact(Person person, String stamp) {
-        ArrayList<ContentProviderOperation> operationList = new ArrayList<ContentProviderOperation>();
+        ArrayList<ContentProviderOperation> operationList = new ArrayList<>();
         operationList.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
                 .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
                 .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
@@ -453,23 +428,24 @@ public class MainActivity extends AppCompatActivity
 
         operationList.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                 .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                .withValue(ContactsContract.Data.MIMETYPE,ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
                 .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, person.getPhonenumber())
                 .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
                 .build());
 
-        try{
+        try {
             ContentProviderResult[] results = getContentResolver().applyBatch(ContactsContract.AUTHORITY, operationList);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     private boolean contactExists(Context context, String number) {
         Uri lookupUri = Uri.withAppendedPath(
                 ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
                 Uri.encode(number));
-        String[] mPhoneNumberProjection = { ContactsContract.PhoneLookup.NUMBER};
-        Cursor cur = context.getContentResolver().query(lookupUri,mPhoneNumberProjection, null, null, null);
+        String[] mPhoneNumberProjection = {ContactsContract.PhoneLookup.NUMBER};
+        Cursor cur = context.getContentResolver().query(lookupUri, mPhoneNumberProjection, null, null, null);
         try {
             if (cur.moveToFirst()) {
                 return true;
@@ -499,33 +475,34 @@ public class MainActivity extends AppCompatActivity
             changeIndex(5);
         } else if (id == R.id.nav_f) {
             changeIndex(6);
-        }else if (id == R.id.nav_g) {
+        } else if (id == R.id.nav_g) {
             changeIndex(7);
         } else if (id == R.id.nav_h) {
             changeIndex(8);
-        }else if (id == R.id.nav_9) {
+        } else if (id == R.id.nav_9) {
             changeIndex(9);
-        }else if (id == R.id.nav_10) {
+        } else if (id == R.id.nav_10) {
             changeIndex(10);
-        }else if (id == R.id.nav_11) {
+        } else if (id == R.id.nav_11) {
             changeIndex(11);
-        }else if (id == R.id.nav_12) {
+        } else if (id == R.id.nav_12) {
             changeIndex(12);
-        }else if (id == R.id.nav_13) {
+        } else if (id == R.id.nav_13) {
             changeIndex(13);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public void intalizeSearch(Menu menu){
+
+    public void intalizeSearch(Menu menu) {
 
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
         final SearchView searchView =
-                ((SearchView)  menu.findItem(R.id.search).getActionView());
+                ((SearchView) menu.findItem(R.id.search).getActionView());
         searchView.setQueryHint(getString(R.string.search_hint));
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
@@ -538,7 +515,7 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                MainActivity.query = newText.replace("-","");
+                MainActivity.query = newText.replace("-", "");
                 updatePeopleList();
                 updateList();
                 return false;
@@ -549,7 +526,6 @@ public class MainActivity extends AppCompatActivity
         item.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionCollapse(MenuItem item) {
-
                 MainActivity.query = "";
                 updatePeopleList();
                 updateList();
@@ -559,12 +535,11 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
-
-
                 return true;  // Return true to expand action view
             }
         });
     }
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
