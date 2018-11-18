@@ -8,6 +8,7 @@ import android.content.ContentProviderResult;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
@@ -41,6 +42,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 import com.otniel.AskForPermissions;
 import com.otniel.PeopleAdapter;
 import com.otniel.Person;
@@ -71,13 +78,9 @@ public class MainActivity extends AppCompatActivity
     ArrayList<Person> people = new ArrayList<>();
     ArrayList<Person> currentPeople = new ArrayList<>();
 
-    private boolean haibaam = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        //ExceptionHandler.register(this,"http://www.ytube.co.il/Bugs.php");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -91,8 +94,6 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        if (!haibaam)
-            navigationView.getMenu().removeItem(R.id.haiGroup);
         navigationView.setNavigationItemSelectedListener(this);
 
         Person.context = this;
@@ -102,15 +103,8 @@ public class MainActivity extends AppCompatActivity
             JSONArray jsonArray = new JSONObject(json).getJSONArray("People");
             for (int i=0;i<jsonArray.length();i++){
                 final Person person = new Person(jsonArray.getJSONObject(i));
-                /*new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Bitmap image = readImageFile(getAssets(), "imgs/"+person.getPhonenumber().replace("-","") + ".jpg");
-                        person.setImg(image);
-                    }
-                }).start();*/
-                if (!haibaam && person.getClassIndex() > 8)
-                    break;
+
+
                 people.add(person);
             }
             Collections.sort(people);
@@ -120,19 +114,6 @@ public class MainActivity extends AppCompatActivity
 
         currentPeople.addAll(people);
         changeIndex(8);
-
-        /*if (Calendar.getInstance().get(Calendar.YEAR) >= 2018){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("הגרסא שברשותך היא ניסיונית ופגה תוקף. \nאנא פנה למפתח למידע נוסף");
-            builder.setCancelable(false);
-            builder.setPositiveButton("אישור", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    finish();
-                }
-            });
-            builder.create().show();
-        }*/
     }
 
     @Override
@@ -266,9 +247,8 @@ public class MainActivity extends AppCompatActivity
         btns[2].setText("שם משפחה א-ת");
         btns[3] = new RadioButton(this);
         btns[3].setText("שם משפחה ת-א");
-        for (int i=0;i<btns.length;i++) {
-
-            radioGroup.addView(btns[i]);
+        for (RadioButton btn : btns) {
+            radioGroup.addView(btn);
         }
         builder.setView(dialogView);
         switch (Person.sortBy){
@@ -588,5 +568,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+    }
+
+    class AppData {
+        ArrayList<Person> people;
+
+        public AppData(ArrayList<Person> devicePeople) {
+            this.people = devicePeople;
+        }
     }
 }
