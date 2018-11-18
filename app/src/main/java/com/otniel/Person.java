@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Amihai on 08/09/2017.
@@ -41,36 +42,8 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     private PersonColor color = PersonColor.NONE;
 
-    public Person(JSONObject json) {
-        try {
-            name = json.getString("Name");
-            surname = json.getString("Surname");
-            try {
-                phonenumber = json.getString("Phone");
-            } catch (JSONException e) {
-            }
-            try {
-                email = json.getString("Email");
-            } catch (JSONException e) {
-            }
-            try {
-                address = json.getString("Adress");
-            } catch (JSONException e) {
-            }
-            try {
-                job = json.getString("Job");
-            } catch (JSONException e) {
-            }
-            classIndex = json.getInt("index");
-            try {
-                rabbi = json.getBoolean("rabbi");
-            } catch (JSONException e) {
-            }
+    public Person() {
 
-            color = PersonColor.valueOf(json.getString("Color"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     public static void deleteContactAuto(String lookupKey) {
@@ -79,7 +52,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
             Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, lookupKey);
             cr.delete(uri, null, null);
         } catch (Exception e) {
-            System.out.println(e.getStackTrace());
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
     }
 
@@ -161,7 +134,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         String[] mPhoneNumberProjection = {ContactsContract.PhoneLookup.LOOKUP_KEY};
         Cursor cur = context.getContentResolver().query(lookupUri, mPhoneNumberProjection, null, null, null);
         try {
-            if (cur.moveToFirst()) {
+            if (cur != null && cur.moveToFirst()) {
                 return cur.getString(0);
             }
         } finally {
@@ -178,7 +151,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         String[] mPhoneNumberProjection = {ContactsContract.PhoneLookup.NUMBER};
         Cursor cur = context.getContentResolver().query(lookupUri, mPhoneNumberProjection, null, null, null);
         try {
-            if (cur.moveToFirst()) {
+            if (cur != null && cur.moveToFirst()) {
                 return true;
             }
         } finally {
@@ -189,7 +162,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
     }
 
     private void addContactAuto() {
-        ArrayList<ContentProviderOperation> operationList = new ArrayList<ContentProviderOperation>();
+        ArrayList<ContentProviderOperation> operationList = new ArrayList<>();
         operationList.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
                 .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
                 .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
@@ -315,7 +288,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     public enum PersonColor {
         YELLOW,
-        NONE;
+        NONE
     }
 
     public enum SortBy {
