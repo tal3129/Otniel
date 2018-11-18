@@ -42,6 +42,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.otniel.AskForPermissions;
 import com.otniel.PeopleAdapter;
@@ -117,6 +122,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Person.context = this;
 
+        // getting the people from database
+        DatabaseReference peopleRef = FirebaseDatabase.getInstance().getReference().child("People");
+        peopleRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                    databasePeople.add(snapshot.getValue(Person.class));
+                onDownloadFinished();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         // getting the people from the device;
         SharedPreferences sp = getPreferences(MODE_PRIVATE);
         String appDataJson = sp.getString("appDataJson", "NO_DATA");
@@ -127,6 +146,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         people = devicePeople;
         currentPeople.addAll(people);
         changeIndex(8);
+    }
+
+    public void onDownloadFinished() {
+        // when the download was finished, update the people on the device.
+        people = databasePeople;
+        updatePeopleList();
+
+        SharedPreferences.Editor sp = getPreferences(MODE_PRIVATE).edit();
+        AppData data = new AppData(devicePeople);
+        sp.putString("appDataJson", (new Gson()).toJson(data));
+        sp.apply();
     }
 
     @Override
