@@ -43,11 +43,11 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
             contactView = inflater.inflate(R.layout.person_layout, null);
             // configure view holder
             PeopleAdapter.ViewHolder viewHolder = new PeopleAdapter.ViewHolder();
-            viewHolder.name = (TextView) contactView.findViewById(R.id.person_name);
-            viewHolder.phone = (TextView) contactView.findViewById(R.id.person_phone);
-            viewHolder.job = (TextView) contactView.findViewById(R.id.person_job);
-            viewHolder.image = (ImageView) contactView.findViewById(R.id.person_img);
-            viewHolder.options = (ImageView) contactView.findViewById(R.id.person_menu);
+            viewHolder.name = contactView.findViewById(R.id.person_name);
+            viewHolder.phone = contactView.findViewById(R.id.person_phone);
+            viewHolder.job = contactView.findViewById(R.id.person_job);
+            viewHolder.image = contactView.findViewById(R.id.person_img);
+            viewHolder.options = contactView.findViewById(R.id.person_menu);
             contactView.setTag(viewHolder);
         }
 
@@ -56,23 +56,21 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
         PeopleAdapter.ViewHolder holder = (PeopleAdapter.ViewHolder) contactView.getTag();
 
         holder.image.setImageResource(R.drawable.contact);
-        person.loadImage(holder.image, holder.name, holder.phone);
 
-        holder.image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        person.loadImage(holder.image);
 
-                LayoutInflater inflater = ((MainActivity)context).getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.go_pro_dialog_layout, null);
-                ((TextView)dialogView.findViewById(R.id.person_big_name)).setText(person.getName());
-                ((TextView)dialogView.findViewById(R.id.person_big_phone)).setText(person.getPhonenumber());
-                if (person.getImage() !=null)
-                    ((ImageView)dialogView.findViewById(R.id.person_big_img)).setImageBitmap(person.getImage());
-                builder.setView(dialogView);
+        holder.image.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-                builder.create().show();
-            }
+            LayoutInflater inflater = ((MainActivity)context).getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.go_pro_dialog_layout, null);
+            ((TextView)dialogView.findViewById(R.id.person_big_name)).setText(person.getName());
+            ((TextView)dialogView.findViewById(R.id.person_big_phone)).setText(person.getPhonenumber());
+            if (person.getImage() !=null)
+                ((ImageView)dialogView.findViewById(R.id.person_big_img)).setImageBitmap(person.getImage());
+            builder.setView(dialogView);
+
+            builder.create().show();
         });
 
         if (person.getColor() == Person.PersonColor.YELLOW)
@@ -113,26 +111,23 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
         }else
             holder.phone.setText(person.getPhonenumber());
 
-        holder.options.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(context, v);
-                popup.setOnMenuItemClickListener(person);
-                MenuInflater inflater = popup.getMenuInflater();
-                inflater.inflate(R.menu.actions, popup.getMenu());
+        holder.options.setOnClickListener(v -> {
+            PopupMenu popup = new PopupMenu(context, v);
+            popup.setOnMenuItemClickListener(person);
+            MenuInflater inflater = popup.getMenuInflater();
+            inflater.inflate(R.menu.actions, popup.getMenu());
 
-                if (person.getPhonenumber().equals("")){
-                    popup.getMenu().removeItem(R.id.action_add_contact);
-                    popup.getMenu().removeItem(R.id.action_call);
-                    popup.getMenu().removeItem(R.id.action_whatsapp);
-                    popup.getMenu().removeItem(R.id.action_share);
-                }
-                if (person.getEmail().equals("")){
-                    popup.getMenu().removeItem(R.id.action_email);
-                }
-
-                popup.show();
+            if (person.getPhonenumber().equals("")){
+                popup.getMenu().removeItem(R.id.action_add_contact);
+                popup.getMenu().removeItem(R.id.action_call);
+                popup.getMenu().removeItem(R.id.action_whatsapp);
+                popup.getMenu().removeItem(R.id.action_share);
             }
+            if (person.getEmail().equals("")){
+                popup.getMenu().removeItem(R.id.action_email);
+            }
+
+            popup.show();
         });
 
         return contactView;
