@@ -82,28 +82,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return query;
     }
 
-    public static Bitmap readImageFile(AssetManager mgr, String path, boolean tryJPG) {
-        Bitmap img = null;
-        InputStream is = null;
-        try {
-            is = mgr.open(path);
-            img = BitmapFactory.decodeStream(is);
-        } catch (FileNotFoundException fnfE) {
-            if (tryJPG)
-                img = readImageFile(mgr, path.replace("jpg", "JPG"), false);
-        } catch (final Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException ignored) {
-                }
-            }
-        }
-        return img;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
