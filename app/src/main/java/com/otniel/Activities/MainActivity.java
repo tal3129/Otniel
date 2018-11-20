@@ -42,11 +42,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 import com.otniel.AskForPermissions;
 import com.otniel.PeopleAdapter;
@@ -59,6 +64,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -105,8 +111,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         peopleRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren())
-                    databasePeople.add(snapshot.getValue(Person.class));
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Person person = snapshot.getValue(Person.class);
+                    databasePeople.add(person);
+                    if (person != null)
+                        downloadImage(person, false);
+                }
                 onDownloadFinished();
             }
             @Override
@@ -152,6 +162,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             Toast.makeText(this, "הפעולה המבוקשת לא יכולה להתבצע ללא הרשאה זו", Toast.LENGTH_LONG).show();
 
+        }
+    }
+
+    // Download the image of this person
+    private void downloadImage(Person person, boolean useBig) {
+        String suffix = useBig ? "JPG" : "jpg";
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference(person.getPhonenumber().replace("-", "") + ".jpg");
+        File localFile = null;
+        try {
+            localFile = File.createTempFile(person.getPhonenumber().replace("-", ""), suffix);
+        } catch (IOException ignored) {
+        }
+        if (localFile != null) {
+            File finalLocalFile = localFile;
+            storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
+                person.setPicPath(finalLocalFile.getPath());
+            }).addOnFailureListener(exception -> {
+                if (!useBig)
+                    downloadImage(person, true);
+            });
         }
     }
 
@@ -203,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.sortby_dialog, null);
-        RadioGroup radioGroup = ((RadioGroup) dialogView.findViewById(R.id.radio_group));
+        RadioGroup radioGroup = dialogView.findViewById(R.id.radio_group);
 
         final RadioButton[] btns = new RadioButton[Person.SortBy.values().length];
         btns[0] = new RadioButton(this);

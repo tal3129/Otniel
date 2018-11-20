@@ -42,6 +42,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     private PersonColor color = PersonColor.NONE;
 
+    private String picPath;
     public Person() {
 
     }
@@ -54,10 +55,6 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         } catch (Exception e) {
             System.out.println(Arrays.toString(e.getStackTrace()));
         }
-    }
-
-    public void setImg(Bitmap img) {
-        this.img = img;
     }
 
     public String getName() {
@@ -101,7 +98,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
     }
 
     public void loadImage(ImageView imgView) {
-        Picasso.get().load("imgs/"+getPhonenumber().replace("-","") + ".jpg").into(imgView);
+        Picasso.get().load(picPath).into(imgView);
     }
 
     @Override
@@ -284,6 +281,14 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
                 return o.getName().compareTo(getName());
         }
         return getName().compareTo(o.getName());
+    }
+
+    public String getPicPath() {
+        return picPath;
+    }
+
+    public void setPicPath(String picPath) {
+        this.picPath = picPath;
     }
 
     public enum PersonColor {
