@@ -23,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -93,12 +94,13 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         return classIndex;
     }
 
+    //TODO remove
     public Bitmap getImage() {
         return img;
     }
 
     public void loadImage(ImageView imgView) {
-        Picasso.get().load(picPath).into(imgView);
+        Picasso.get().load("file://" + picPath).into(imgView);
     }
 
     @Override

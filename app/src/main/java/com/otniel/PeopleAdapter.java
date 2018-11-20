@@ -66,8 +66,8 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
             View dialogView = inflater.inflate(R.layout.go_pro_dialog_layout, null);
             ((TextView)dialogView.findViewById(R.id.person_big_name)).setText(person.getName());
             ((TextView)dialogView.findViewById(R.id.person_big_phone)).setText(person.getPhonenumber());
-            if (person.getImage() !=null)
-                ((ImageView)dialogView.findViewById(R.id.person_big_img)).setImageBitmap(person.getImage());
+            if (person.getPicPath() != null)
+                person.loadImage(dialogView.findViewById(R.id.person_big_img));
             builder.setView(dialogView);
 
             builder.create().show();
