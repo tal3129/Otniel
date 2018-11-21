@@ -45,6 +45,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
+import com.otniel.AppSettings;
 import com.otniel.AskForPermissions;
 import com.otniel.PeopleAdapter;
 import com.otniel.Person;
@@ -68,9 +69,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     ArrayList<Person> databasePeople = new ArrayList<>();
     ArrayList<Person> devicePeople = new ArrayList<>();
-    public static String getQuery() {
-        return query;
-    }
+
+    private int spVersion = -1, fbVersion = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,26 +90,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Person.context = this;
 
-        downloadPeopleFromFB();
+        getVersionFromFB();
 
-        getPeopleFromSP();
+        getPeopleFromFB();
+
+        getDataFromSP();
     }
 
-    // getting the people from the device;
-    private void getPeopleFromSP() {
-        SharedPreferences sp = getPreferences(MODE_PRIVATE);
-        String appDataJson = sp.getString("appDataJson", "NO_DATA");
-        Gson gson = new Gson();
-        if (!appDataJson.equals("NO_DATA"))
-            devicePeople = gson.fromJson(appDataJson, AppData.class).people;
 
-        people = devicePeople;
-        currentPeople.addAll(people);
-        changeIndex(8);
+    private void getVersionFromFB() {
+        DatabaseReference versionRef = FirebaseDatabase.getInstance().getReference().child("settings");
+        versionRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                AppSettings settings = dataSnapshot.getValue(AppSettings.class);
+                if (settings != null)
+                    fbVersion = settings.getVersion();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     // getting the people from database
-    private void downloadPeopleFromFB() {
+    private void getPeopleFromFB() {
         DatabaseReference peopleRef = FirebaseDatabase.getInstance().getReference().child("People");
         peopleRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -117,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Person person = snapshot.getValue(Person.class);
                     databasePeople.add(person);
-                    if (person != null)
+                    if (person != null && fbVersion > spVersion)
                         downloadImage(person, false);
                 }
                 onDownloadFinished();
@@ -128,13 +133,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    // getting the people from the device;
+    private void getDataFromSP() {
+        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+        String appDataJson = sp.getString("appDataJson", "NO_DATA");
+        Gson gson = new Gson();
+        if (!appDataJson.equals("NO_DATA")) {
+            AppData data = gson.fromJson(appDataJson, AppData.class);
+            devicePeople = data.people;
+            spVersion = data.version;
+        }
+
+        people = devicePeople;
+        currentPeople.addAll(people);
+        changeIndex(8);
+    }
+
     public void onDownloadFinished() {
         // when the download was finished, update the people on the device.
         people = databasePeople;
         changeIndex(8);
 
         SharedPreferences.Editor sp = getPreferences(MODE_PRIVATE).edit();
-        AppData data = new AppData(devicePeople);
+        AppData data = new AppData(devicePeople, fbVersion);
         sp.putString("appDataJson", (new Gson()).toJson(data));
         sp.apply();
     }
@@ -527,12 +548,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    public static String getQuery() {
+        return query;
+    }
 
     class AppData {
         ArrayList<Person> people;
+        int version;
 
-        public AppData(ArrayList<Person> devicePeople) {
+        public AppData(ArrayList<Person> devicePeople, int version) {
             this.people = devicePeople;
+            this.version = version;
         }
     }
 }
