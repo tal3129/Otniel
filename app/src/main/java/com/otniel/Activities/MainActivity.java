@@ -45,7 +45,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
-import com.otniel.AppSettings;
 import com.otniel.AskForPermissions;
 import com.otniel.PeopleAdapter;
 import com.otniel.Person;
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 AppSettings settings = dataSnapshot.getValue(AppSettings.class);
                 if (settings != null)
-                    fbVersion = settings.getVersion();
+                    fbVersion = settings.version;
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -119,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         peopleRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                databasePeople.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Person person = snapshot.getValue(Person.class);
                     databasePeople.add(person);
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         changeIndex(8);
 
         SharedPreferences.Editor sp = getPreferences(MODE_PRIVATE).edit();
-        AppData data = new AppData(devicePeople, fbVersion);
+        AppData data = new AppData(databasePeople, fbVersion);
         sp.putString("appDataJson", (new Gson()).toJson(data));
         sp.apply();
     }
