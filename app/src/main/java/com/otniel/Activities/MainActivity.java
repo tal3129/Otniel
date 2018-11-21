@@ -147,23 +147,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         sp.apply();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (grantResults.length > 0
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-            if (call)
-                showAddAllDialog();
-
-        } else if (grantResults.length > 0
-                && grantResults[0] == PackageManager.PERMISSION_DENIED) {
-
-            Toast.makeText(this, "הפעולה המבוקשת לא יכולה להתבצע ללא הרשאה זו", Toast.LENGTH_LONG).show();
-
-        }
-    }
 
     // Download the image of this person
     private void downloadImage(Person person, boolean useBig) {
@@ -384,8 +367,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         String tag = stamp.equals("") ? "" : "(" + stamp + ")";
 
-        ArrayList<Person> peopleToAdd = new ArrayList<>();
-        peopleToAdd.addAll(currentPeople);
+        ArrayList<Person> peopleToAdd = new ArrayList<>(currentPeople);
 
         for (Person person : peopleToAdd) {
             count++;
@@ -484,16 +466,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             changeIndex(7);
         } else if (id == R.id.nav_h) {
             changeIndex(8);
-        } else if (id == R.id.nav_9) {
-            changeIndex(9);
-        } else if (id == R.id.nav_10) {
-            changeIndex(10);
-        } else if (id == R.id.nav_11) {
-            changeIndex(11);
-        } else if (id == R.id.nav_12) {
-            changeIndex(12);
-        } else if (id == R.id.nav_13) {
-            changeIndex(13);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -546,9 +518,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            if (call)
+                showAddAllDialog();
+
+        } else if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+
+            Toast.makeText(this, "הפעולה המבוקשת לא יכולה להתבצע ללא הרשאה זו", Toast.LENGTH_LONG).show();
+
+        }
     }
+
 
     class AppData {
         ArrayList<Person> people;

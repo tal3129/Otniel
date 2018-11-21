@@ -36,24 +36,4 @@
             android:title="כולם" />
     </group>
 
-    <item android:id="@+id/haiGroup" android:title="חי בהם">
-        <menu>
-            <item
-                android:id="@+id/nav_9"
-                android:title="צוות"/>
-            <item
-                android:id="@+id/nav_10"
-                android:title="שבת ירושלים"/>
-            <item
-                android:id="@+id/nav_11"
-                android:title="שבת מודיעין"/>
-            <item
-                android:id="@+id/nav_12"
-                android:title="שבת גוש עציון"/>
-            <item
-                android:id="@+id/nav_13"
-                android:title="מקוואות"/>
-        </menu>
-    </item>
-
 </menu>
