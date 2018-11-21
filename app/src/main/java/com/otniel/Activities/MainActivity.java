@@ -6,15 +6,11 @@ import android.app.SearchManager;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -34,7 +30,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -42,14 +37,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
@@ -58,17 +50,9 @@ import com.otniel.PeopleAdapter;
 import com.otniel.Person;
 import com.otniel.R;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -106,7 +90,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Person.context = this;
 
-        // getting the people from database
+        downloadPeopleFromFB();
+
+        getPeopleFromSP();
+    }
+
+    // getting the people from the device;
+    private void getPeopleFromSP() {
+        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+        String appDataJson = sp.getString("appDataJson", "NO_DATA");
+        Gson gson = new Gson();
+        if (!appDataJson.equals("NO_DATA"))
+            devicePeople = gson.fromJson(appDataJson, AppData.class).people;
+
+        people = devicePeople;
+        currentPeople.addAll(people);
+        changeIndex(8);
+    }
+
+    // getting the people from database
+    private void downloadPeopleFromFB() {
         DatabaseReference peopleRef = FirebaseDatabase.getInstance().getReference().child("People");
         peopleRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -121,25 +124,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-        // getting the people from the device;
-        SharedPreferences sp = getPreferences(MODE_PRIVATE);
-        String appDataJson = sp.getString("appDataJson", "NO_DATA");
-        Gson gson = new Gson();
-        if (!appDataJson.equals("NO_DATA"))
-            devicePeople = gson.fromJson(appDataJson, AppData.class).people;
-
-        people = devicePeople;
-        currentPeople.addAll(people);
-        changeIndex(8);
     }
 
     public void onDownloadFinished() {
         // when the download was finished, update the people on the device.
         people = databasePeople;
-        updatePeopleList();
+        changeIndex(8);
 
         SharedPreferences.Editor sp = getPreferences(MODE_PRIVATE).edit();
         AppData data = new AppData(devicePeople);
