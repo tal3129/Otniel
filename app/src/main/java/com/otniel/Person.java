@@ -35,6 +35,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     public static Context context;
     public static SortBy sortBy = SortBy.NAME_A_TO_Z;
+    public boolean hasImage = false;
 
     public void setName(String name) {
         String[] str = name.split(" ");

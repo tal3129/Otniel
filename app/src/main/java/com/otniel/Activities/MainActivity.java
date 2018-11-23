@@ -107,11 +107,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 if (fbVersion > spVersion)
                     getPeopleFromFB();
+                else
+                    downloadLeftImages();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
+
+    // Goes through the current people, downloads images of people
+    private void downloadLeftImages() {
+        for(Person person : people)
+            if (!person.hasImage)
+                downloadImage(person, false);
     }
 
     // getting the people from database
@@ -127,7 +136,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     if (person != null)
                         downloadImage(person, false);
                 }
-                onDownloadFinished();
+                people = databasePeople;
+                changeIndex(8);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -151,15 +161,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         changeIndex(8);
     }
 
-    public void onDownloadFinished() {
-        // when the download was finished, update the people on the device.
-        people = databasePeople;
-        changeIndex(8);
-
+    // when the download was finished, update the people on the device.
+    @Override
+    public void onStop() {
         SharedPreferences.Editor sp = getPreferences(MODE_PRIVATE).edit();
-        AppData data = new AppData(databasePeople, fbVersion);
+        AppData data = new AppData(people, fbVersion);
         sp.putString("appDataJson", (new Gson()).toJson(data));
         sp.apply();
+        super.onStop();
     }
 
 
@@ -175,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (localFile != null) {
             person.setPicPath(localFile.getPath());
             storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-
+                person.hasImage = true;
             }).addOnFailureListener(exception -> {
                 if (!useBig)
                     downloadImage(person, true);
