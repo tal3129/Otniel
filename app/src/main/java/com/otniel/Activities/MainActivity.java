@@ -91,12 +91,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getVersionFromFB();
 
-        getPeopleFromFB();
-
         getDataFromSP();
     }
 
 
+    // Gets the version from fb. If it is higher than the phone's one, update.
     private void getVersionFromFB() {
         DatabaseReference versionRef = FirebaseDatabase.getInstance().getReference().child("settings");
         versionRef.addValueEventListener(new ValueEventListener() {
@@ -105,6 +104,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 AppSettings settings = dataSnapshot.getValue(AppSettings.class);
                 if (settings != null)
                     fbVersion = settings.version;
+
+                if (fbVersion > spVersion)
+                    getPeopleFromFB();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Person person = snapshot.getValue(Person.class);
                     databasePeople.add(person);
-                    if (person != null && fbVersion > spVersion)
+                    if (person != null)
                         downloadImage(person, false);
                 }
                 onDownloadFinished();
