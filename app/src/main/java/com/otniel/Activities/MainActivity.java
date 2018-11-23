@@ -171,9 +171,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } catch (IOException ignored) {
         }
         if (localFile != null) {
-            File finalLocalFile = localFile;
+            person.setPicPath(localFile.getPath());
             storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-                person.setPicPath(finalLocalFile.getPath());
+
             }).addOnFailureListener(exception -> {
                 if (!useBig)
                     downloadImage(person, true);
