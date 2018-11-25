@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // Download the image of this person
     private void downloadImage(Person person, boolean useBig) {
         String suffix = useBig ? "JPG" : "jpg";
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference(person.getPhonenumber().replace("-", "") + ".jpg");
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference(person.getPhonenumber().replace("-", "") + "." + suffix);
         File localFile = null;
         try {
             localFile = File.createTempFile(person.getPhonenumber().replace("-", ""), suffix);
