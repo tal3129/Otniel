@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // Goes through the current people, downloads images of people
     private void downloadLeftImages() {
         for(Person person : people)
-            if (!person.hasImage)
+            if (person.imageState != 1)
                 downloadImage(person, false);
     }
 
@@ -184,10 +184,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (localFile != null) {
             person.setPicPath(localFile.getPath());
             storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-                person.hasImage = true;
+                person.imageState = 1;
             }).addOnFailureListener(exception -> {
                 if (!useBig)
                     downloadImage(person, true);
+                else
+                    person.imageState = -1; // If the image could not be loaded
             });
         }
     }

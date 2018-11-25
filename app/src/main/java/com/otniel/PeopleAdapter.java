@@ -56,8 +56,8 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
         PeopleAdapter.ViewHolder holder = (PeopleAdapter.ViewHolder) contactView.getTag();
 
         holder.image.setImageResource(R.drawable.contact);
-
-        person.loadImage(holder.image);
+        if (person.imageState != -1)
+            person.loadImage(holder.image);
 
         holder.image.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -66,7 +66,7 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
             View dialogView = inflater.inflate(R.layout.go_pro_dialog_layout, null);
             ((TextView)dialogView.findViewById(R.id.person_big_name)).setText(person.getName());
             ((TextView)dialogView.findViewById(R.id.person_big_phone)).setText(person.getPhonenumber());
-            if (person.getPicPath() != null)
+            if (person.getPicPath() != null && person.imageState != -1)
                 person.loadImage(dialogView.findViewById(R.id.person_big_img));
             builder.setView(dialogView);
 
