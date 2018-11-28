@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onStop() {
         SharedPreferences.Editor sp = getPreferences(MODE_PRIVATE).edit();
-        AppData data = new AppData(people, fbVersion);
+        AppData data = new AppData(people, Math.max(spVersion, fbVersion));
         sp.putString("appDataJson", (new Gson()).toJson(data));
         sp.apply();
         super.onStop();
