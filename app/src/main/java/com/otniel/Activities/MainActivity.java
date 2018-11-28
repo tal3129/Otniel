@@ -68,9 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     ArrayList<Person> databasePeople = new ArrayList<>();
     ArrayList<Person> devicePeople = new ArrayList<>();
-    public static String getQuery() {
-        return query;
-    }
+
+    private int spVersion = -1, fbVersion = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,37 +89,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Person.context = this;
 
-        downloadPeopleFromFB();
+        getVersionFromFB();
 
-        getPeopleFromSP();
+        getDataFromSP();
     }
 
-    // getting the people from the device;
-    private void getPeopleFromSP() {
-        SharedPreferences sp = getPreferences(MODE_PRIVATE);
-        String appDataJson = sp.getString("appDataJson", "NO_DATA");
-        Gson gson = new Gson();
-        if (!appDataJson.equals("NO_DATA"))
-            devicePeople = gson.fromJson(appDataJson, AppData.class).people;
 
-        people = devicePeople;
-        currentPeople.addAll(people);
-        changeIndex(8);
-    }
-
-    // getting the people from database
-    private void downloadPeopleFromFB() {
-        DatabaseReference peopleRef = FirebaseDatabase.getInstance().getReference().child("People");
-        peopleRef.addValueEventListener(new ValueEventListener() {
+    // Gets the version from fb. If it is higher than the phone's one, update.
+    private void getVersionFromFB() {
+        DatabaseReference versionRef = FirebaseDatabase.getInstance().getReference().child("settings");
+        versionRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Person person = snapshot.getValue(Person.class);
-                    databasePeople.add(person);
-                    if (person != null)
-                        downloadImage(person, false);
-                }
-                onDownloadFinished();
+                AppSettings settings = dataSnapshot.getValue(AppSettings.class);
+                if (settings != null)
+                    fbVersion = settings.version;
+
+                if (fbVersion > spVersion)
+                    getPeopleFromFB();
+                else
+                    downloadLeftImages();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -128,34 +116,80 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    public void onDownloadFinished() {
-        // when the download was finished, update the people on the device.
-        people = databasePeople;
-        changeIndex(8);
+    // Goes through the current people, downloads images of people
+    private void downloadLeftImages() {
+        for(Person person : people)
+            if (person.imageState != 1)
+                downloadImage(person, false);
+    }
 
+    // getting the people from database
+    private void getPeopleFromFB() {
+        DatabaseReference peopleRef = FirebaseDatabase.getInstance().getReference().child("People");
+        peopleRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                databasePeople.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Person person = snapshot.getValue(Person.class);
+                    databasePeople.add(person);
+                    if (person != null)
+                        downloadImage(person, false);
+                }
+                people = databasePeople;
+                changeIndex(8);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    // getting the people from the device;
+    private void getDataFromSP() {
+        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+        String appDataJson = sp.getString("appDataJson", "NO_DATA");
+        Gson gson = new Gson();
+        if (!appDataJson.equals("NO_DATA")) {
+            AppData data = gson.fromJson(appDataJson, AppData.class);
+            devicePeople = data.people;
+            spVersion = data.version;
+        }
+
+        people = devicePeople;
+        currentPeople.addAll(people);
+        changeIndex(8);
+    }
+
+    // when the download was finished, update the people on the device.
+    @Override
+    public void onStop() {
         SharedPreferences.Editor sp = getPreferences(MODE_PRIVATE).edit();
-        AppData data = new AppData(devicePeople);
+        AppData data = new AppData(people, fbVersion);
         sp.putString("appDataJson", (new Gson()).toJson(data));
         sp.apply();
+        super.onStop();
     }
 
 
     // Download the image of this person
     private void downloadImage(Person person, boolean useBig) {
         String suffix = useBig ? "JPG" : "jpg";
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference(person.getPhonenumber().replace("-", "") + ".jpg");
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference(person.getPhonenumber().replace("-", "") + "." + suffix);
         File localFile = null;
         try {
             localFile = File.createTempFile(person.getPhonenumber().replace("-", ""), suffix);
         } catch (IOException ignored) {
         }
         if (localFile != null) {
-            File finalLocalFile = localFile;
+            person.setPicPath(localFile.getPath());
             storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-                person.setPicPath(finalLocalFile.getPath());
+                person.imageState = 1;
             }).addOnFailureListener(exception -> {
                 if (!useBig)
                     downloadImage(person, true);
+                else
+                    person.imageState = -1; // If the image could not be loaded
             });
         }
     }
@@ -534,12 +568,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    public static String getQuery() {
+        return query;
+    }
 
     class AppData {
         ArrayList<Person> people;
+        int version;
 
-        public AppData(ArrayList<Person> devicePeople) {
+        public AppData(ArrayList<Person> devicePeople, int version) {
             this.people = devicePeople;
+            this.version = version;
         }
     }
 }
