@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_google_signin_btn_text_dark_default"
+    tools:context=".Activities.places"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="63dp"
+        android:layout_height="70dp"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="135dp" />
+
+</android.support.constraint.ConstraintLayout>

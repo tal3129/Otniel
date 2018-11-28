@@ -35,6 +35,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     // Getting a "Could not find" error? Make sure you have
     // added the Google maven respository to your root build.gradle
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

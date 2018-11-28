@@ -13,4 +13,8 @@
         android:icon="@drawable/ic_search"
         app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="android.support.v7.widget.SearchView" />
+    <item
+        android:id="@+id/action_places"
+        android:orderInCategory="101"
+        android:title="מקומות בבית המדרש" />
 </menu>

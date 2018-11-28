@@ -279,6 +279,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         } else if (id == R.id.action_emailAll) {
             emailAll();
+        } else if(id == R.id.action_places){
+            //go to activity_places
+            Intent intent = new Intent(this, places.class);
+            //EditText editText = (EditText) findViewById(R.id.editText);
+            //String message = editText.getText().toString();
+            //intent.putExtra(EXTRA_MESSAGE, message);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
