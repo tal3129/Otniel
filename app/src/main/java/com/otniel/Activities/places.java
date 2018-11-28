@@ -22,7 +22,7 @@ public class places extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_places);
 
 
-        for(int i = 1; i <= 2; i ++) {
+        for(int i = 1; i <= 1; i ++) {
             int id = getResources().getIdentifier("b" + Integer.toString(i), "id", this.getPackageName());
             Button b = findViewById(id);
             b.setOnClickListener(this);
