@@ -89,36 +89,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Person.context = this;
 
-        getVersionFromFB();
-
         getDataFromSP();
+
+        downloadLeftImages();
+
+        getPeopleFromFB();
     }
 
-
-    // Gets the version from fb. If it is higher than the phone's one, update.
-    private void getVersionFromFB() {
-        DatabaseReference versionRef = FirebaseDatabase.getInstance().getReference().child("settings");
-        versionRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                AppSettings settings = dataSnapshot.getValue(AppSettings.class);
-                if (settings != null)
-                    fbVersion = settings.version;
-
-                if (fbVersion > spVersion)
-                    getPeopleFromFB();
-                else
-                    downloadLeftImages();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-    }
 
     // Goes through the current people, downloads images of people
     private void downloadLeftImages() {
-        for(Person person : people)
+        for (Person person : people)
             if (person.imageState != 1)
                 downloadImage(person, false);
     }
@@ -129,14 +110,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         peopleRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // First, we have the old people list.
                 databasePeople.clear();
+
+                // Now, we Iterate through the downloaded people.
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Person person = snapshot.getValue(Person.class);
-                    databasePeople.add(person);
-                    if (person != null)
-                        downloadImage(person, false);
+                    Person newPerson = snapshot.getValue(Person.class);
+                    if (newPerson == null)
+                        continue;
+
+                    // Check if there is already an old person with these details.
+                    Person oldPerson = findPersonByNumber(people, newPerson.getPhonenumber());
+
+
+                    // If there is no old person - the new one.
+                    if (oldPerson == null || newPerson.differentFrom(oldPerson))
+                        databasePeople.add(newPerson);
+                        // If there is there is an old person, and it is identical
+                    else
+                        databasePeople.add(oldPerson);
+
                 }
-                people = databasePeople;
+                people.clear();
+                people.addAll(databasePeople);
+                downloadLeftImages();
                 changeIndex(8);
             }
             @Override
@@ -573,5 +570,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.people = devicePeople;
             this.version = version;
         }
+    }
+
+    public Person findPersonByNumber(ArrayList<Person> persons, String phone) {
+        for (Person p : persons) {
+            if (p.getPhonenumber().equals(phone))
+                return p;
+        }
+        return null;
     }
 }

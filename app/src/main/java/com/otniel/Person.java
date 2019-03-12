@@ -37,25 +37,26 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
     public static SortBy sortBy = SortBy.NAME_A_TO_Z;
     public int imageState = 0; // 0 - I don't know, 1 - has image, -1 - doesn't have image
 
-    public void setName(String name) {
-        String[] str = name.split(" ");
-        this.name = "";
-        for(int i = 0; i < str.length - 1; i++){
-            this.name += str[i] + (i == str.length - 2 ? "": " ");
-        }
-        this.surname = str[str.length-1];
-    }
 
+    private int imageVersion = -1;
     private String name, surname, phonenumber = "", address = "", job = "", email = "";
     private int classIndex;
     private Bitmap img;
     private boolean rabbi;
-
     private PersonColor color = PersonColor.NONE;
-
     private String picPath;
+
     public Person() {
 
+    }
+
+    // Returns whether one of the main details of the person was differentFrom
+    public boolean differentFrom(Person other){
+        return  !(name.equals(other.name) &&
+                surname.equals(other.surname) &&
+                phonenumber.equals(other.phonenumber) &&
+                email.equals(other.email) &&
+                imageVersion == other.imageVersion);
     }
 
     public static void deleteContactAuto(String lookupKey) {
@@ -78,6 +79,14 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
                 return (rabbi ? "הרב " : "") + surname + " " + name;
         }
         return name + " " + surname;
+    }
+    public void setName(String name) {
+        String[] str = name.split(" ");
+        this.name = "";
+        for(int i = 0; i < str.length - 1; i++){
+            this.name += str[i] + (i == str.length - 2 ? "": " ");
+        }
+        this.surname = str[str.length-1];
     }
 
     public String getNameAlwaysFromName() {
@@ -208,6 +217,13 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
             e.printStackTrace();
         }
     }
+    public int getImageVersion() {
+        return imageVersion;
+    }
+
+    public void setImageVersion(int imageVersion) {
+        this.imageVersion = imageVersion;
+    }
 
     private void shareContact(boolean delete) {
         if (AskForPermissions.checkPermission((Activity) context, AskForPermissions.contacts)) {
@@ -278,7 +294,6 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
         emailIntent.setType("vnd.android.cursor.item/email");
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{email});
-        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "חי בהם");
         context.startActivity(emailIntent);
     }
 
