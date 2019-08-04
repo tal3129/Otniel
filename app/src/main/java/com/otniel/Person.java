@@ -283,11 +283,10 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
     }
 
     private void sendWhatsapp() {
-        String whatsappId = 972 + phonenumber.substring(1).replace("-", "") + "@s.whatsapp.net";
-        Uri uri = Uri.parse("smsto:" + whatsappId);
-        Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
-        intent.setPackage("com.whatsapp");
-        context.startActivity(intent);
+        String url = "https://api.whatsapp.com/send?phone="+ 972 + phonenumber;
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        context.startActivity(i);
     }
 
     private void sendEmail() {
