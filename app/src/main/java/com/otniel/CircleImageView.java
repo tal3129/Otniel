@@ -18,7 +18,7 @@ import android.widget.ImageView;
 /**
  * Created by amxha on 28/01/2016.
  */
-public class CircleImageView extends ImageView{
+public class CircleImageView extends android.support.v7.widget.AppCompatImageView{
 
     public static  boolean crash = false;
 

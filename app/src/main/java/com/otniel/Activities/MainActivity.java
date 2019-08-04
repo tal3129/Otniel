@@ -1,10 +1,12 @@
 package com.otniel.Activities;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.SearchManager;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,10 +14,12 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -136,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 downloadLeftImages();
                 changeIndex(8);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
@@ -326,7 +331,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             emailIntent.setType("vnd.android.cursor.item/email");
             String[] s = new String[]{};
             emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, emailAddress.toArray(s));
-            emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "חי בהם");
             startActivity(emailIntent);
         } else {
             Toast.makeText(this, "לא נמצאו אימיילים ברשימת האנשים הנוכחית", Toast.LENGTH_LONG).show();
@@ -385,8 +389,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .setSmallIcon(R.drawable.noti_otniel);
 
         int count = 0;
-        Person rndPerson = currentPeople.get((int) (Math.random() * currentPeople.size()));
-        int notiIndex = Integer.parseInt(rndPerson.getPhonenumber().substring(rndPerson.getPhonenumber().length() - 3));
 
         String tag = stamp.equals("") ? "" : "(" + stamp + ")";
 
@@ -396,19 +398,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             count++;
 
             mBuilder.setProgress(currentPeople.size(), count - 1, false)
-                    .setContentText(count + " of " + currentPeople.size());
-            mNotifyManager.notify(notiIndex, mBuilder.build());
+                    .setContentText(count + " מתוך " + currentPeople.size());
+            mNotifyManager.notify(0, mBuilder.build());
 
             boolean exist = contactExists(this, person.getPhonenumber().replace("-", ""));
-            if (!exist) {
+            if (!exist)
                 addContact(person, tag);
-            }
         }
 
         mBuilder.setProgress(currentPeople.size(), currentPeople.size(), false)
-                .setContentTitle("Completed!")
-                .setContentText(currentPeople.size() + " of " + currentPeople.size());
-        mNotifyManager.notify(notiIndex, mBuilder.build());
+                .setContentTitle("הסתיים!")
+                .setContentText(currentPeople.size() + " מתוך " + currentPeople.size());
+        mNotifyManager.notify(0, mBuilder.build());
     }
 
     private void addContact(Person person, String stamp) {
@@ -451,11 +452,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private boolean contactExists(Context context, String number) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (getApplicationContext().checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED)
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 1);
+        }
+
+
         Uri lookupUri = Uri.withAppendedPath(
                 ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
                 Uri.encode(number));
         String[] mPhoneNumberProjection = {ContactsContract.PhoneLookup.NUMBER};
-        Cursor cur = context.getContentResolver().query(lookupUri, mPhoneNumberProjection, null, null, null);
+        ContentResolver res = context.getContentResolver();
+        Cursor cur = res.query(lookupUri, mPhoneNumberProjection, null, null, null);
         try {
             if (cur.moveToFirst()) {
                 return true;
@@ -467,9 +475,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
