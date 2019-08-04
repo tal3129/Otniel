@@ -39,7 +39,7 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
         View contactView = convertView;
         // reuse views
         if (contactView == null) {
-            LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             contactView = inflater.inflate(R.layout.person_layout, null);
             // configure view holder
             PeopleAdapter.ViewHolder viewHolder = new PeopleAdapter.ViewHolder();
@@ -62,10 +62,10 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
         holder.image.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-            LayoutInflater inflater = ((MainActivity)context).getLayoutInflater();
+            LayoutInflater inflater = ((MainActivity) context).getLayoutInflater();
             View dialogView = inflater.inflate(R.layout.go_pro_dialog_layout, null);
-            ((TextView)dialogView.findViewById(R.id.person_big_name)).setText(person.getName());
-            ((TextView)dialogView.findViewById(R.id.person_big_phone)).setText(person.getPhonenumber());
+            ((TextView) dialogView.findViewById(R.id.person_big_name)).setText(person.getName());
+            ((TextView) dialogView.findViewById(R.id.person_big_phone)).setText(person.getPhonenumber());
             if (person.getPicPath() != null && person.imageState != -1)
                 person.loadImage(dialogView.findViewById(R.id.person_big_img));
             builder.setView(dialogView);
@@ -78,59 +78,61 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
         else
             holder.name.setBackgroundColor(context.getResources().getColor(android.R.color.transparent));
 
-        if (person.getJob().equals("")){
+        if (person.getJob().equals("")) {
             holder.job.setVisibility(View.GONE);
-        }else{
+        } else {
             holder.job.setText(person.getJob());
             holder.job.setVisibility(View.VISIBLE);
         }
 
         if (!MainActivity.getQuery().equals("") &&
-                person.getName().contains(MainActivity.getQuery())){
+                person.getName().contains(MainActivity.getQuery())) {
             String query = MainActivity.getQuery();
             String name = person.getName();
-            String htmlText = name.substring(0,name.indexOf(query)) + "<font color=#FF4081>" + query + "</font>" + name.substring(name.indexOf(query) + query.length());
+            String htmlText = name.substring(0, name.indexOf(query)) + "<font color=#FF4081>" + query + "</font>" + name.substring(name.indexOf(query) + query.length());
 
             holder.name.setText(Html.fromHtml(htmlText));
-        }else
+        } else
             holder.name.setText(person.getName());
         if (!MainActivity.getQuery().equals("") &&
-                person.getPhonenumber().replace("-","").contains(MainActivity.getQuery())){
+                person.getPhonenumber().replace("-", "").contains(MainActivity.getQuery())) {
             String query = MainActivity.getQuery();
             String phone = person.getPhonenumber();
-            String phoneNo = phone.replace("-","");
-            String htmlText="";
+            String phoneNo = phone.replace("-", "");
+            String htmlText;
 
-            if (phoneNo.indexOf(query) < 4 && phoneNo.indexOf(query) + query.length() >= 4){
-                htmlText = phone.substring(0,phoneNo.indexOf(query)) + "<font color=#FF4081>" + phone.substring(phoneNo.indexOf(query),phoneNo.indexOf(query)+query.length()+1) + "</font>" + phone.substring(phoneNo.indexOf(query) + query.length()+1);
-            }else{
-                htmlText = phone.substring(0,phoneNo.indexOf(query)) + "<font color=#FF4081>" + query + "</font>" + phone.substring(phoneNo.indexOf(query) + query.length());
+            if (phoneNo.indexOf(query) < 4 && phoneNo.indexOf(query) + query.length() >= 4) {
+                htmlText = phone.substring(0, phoneNo.indexOf(query)) + "<font color=#FF4081>" + phone.substring(phoneNo.indexOf(query), phoneNo.indexOf(query) + query.length() + 1) + "</font>" + phone.substring(phoneNo.indexOf(query) + query.length() + 1);
+            } else {
+                htmlText = phone.substring(0, phoneNo.indexOf(query)) + "<font color=#FF4081>" + query + "</font>" + phone.substring(phoneNo.indexOf(query) + query.length());
             }
 
             holder.phone.setText(Html.fromHtml(htmlText));
-        }else
+        } else
             holder.phone.setText(person.getPhonenumber());
 
-        holder.options.setOnClickListener(v -> {
-            PopupMenu popup = new PopupMenu(context, v);
-            popup.setOnMenuItemClickListener(person);
-            MenuInflater inflater = popup.getMenuInflater();
-            inflater.inflate(R.menu.actions, popup.getMenu());
-
-            if (person.getPhonenumber().equals("")){
-                popup.getMenu().removeItem(R.id.action_add_contact);
-                popup.getMenu().removeItem(R.id.action_call);
-                popup.getMenu().removeItem(R.id.action_whatsapp);
-                popup.getMenu().removeItem(R.id.action_share);
-            }
-            if (person.getEmail().equals("")){
-                popup.getMenu().removeItem(R.id.action_email);
-            }
-
-            popup.show();
-        });
+        holder.options.setOnClickListener(v -> showPopup(person, v));
 
         return contactView;
+    }
+
+    private void showPopup(Person person, View v) {
+        PopupMenu popup = new PopupMenu(context, v);
+        popup.setOnMenuItemClickListener(person);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.actions, popup.getMenu());
+
+        if (person.getPhonenumber().equals("")) {
+            popup.getMenu().removeItem(R.id.action_add_contact);
+            popup.getMenu().removeItem(R.id.action_call);
+            popup.getMenu().removeItem(R.id.action_whatsapp);
+            popup.getMenu().removeItem(R.id.action_share);
+        }
+        if (person.getEmail().equals("")) {
+            popup.getMenu().removeItem(R.id.action_email);
+        }
+
+        popup.show();
     }
 
     class ViewHolder {

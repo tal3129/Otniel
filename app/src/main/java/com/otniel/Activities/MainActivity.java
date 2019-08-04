@@ -75,6 +75,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private int spVersion = -1, fbVersion = -1;
 
+    public static String getQuery() {
+        return query;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getPeopleFromFB();
     }
-
 
     // Goes through the current people, downloads images of people
     private void downloadLeftImages() {
@@ -172,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         sp.apply();
         super.onStop();
     }
-
 
     // Download the image of this person
     private void downloadImage(Person person, boolean useBig) {
@@ -287,7 +289,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dialog.show();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -306,9 +307,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             openSortByAlertView();
         } else if (id == R.id.action_addAll) {
             if (AskForPermissions.checkPermission(this, AskForPermissions.contacts)) {
-
                 showAddAllDialog();
-
             } else {
                 MainActivity.call = true;
                 AskForPermissions.requestPermission(this, AskForPermissions.contacts, AskForPermissions.contactsIndx);
@@ -565,8 +564,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public static String getQuery() {
-        return query;
+    public Person findPersonByNumber(ArrayList<Person> persons, String phone) {
+        for (Person p : persons) {
+            if (p.getPhonenumber().equals(phone))
+                return p;
+        }
+        return null;
     }
 
     class AppData {
@@ -577,13 +580,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.people = devicePeople;
             this.version = version;
         }
-    }
-
-    public Person findPersonByNumber(ArrayList<Person> persons, String phone) {
-        for (Person p : persons) {
-            if (p.getPhonenumber().equals(phone))
-                return p;
-        }
-        return null;
     }
 }
