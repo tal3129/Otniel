@@ -39,7 +39,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
 
     private int imageVersion = -1;
-    private String name, surname, phonenumber = "", address = "", job = "", email = "";
+    private String name, surname, phonenumber = "", address = "", email = "";
     private int classIndex;
     private Bitmap img;
     private boolean rabbi;
@@ -95,10 +95,6 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     public PersonColor getColor() {
         return color;
-    }
-
-    public String getJob() {
-        return job;
     }
 
     public String getEmail() {

@@ -41,15 +41,6 @@
             android:layout_height="wrap_content"
             android:text="054-5952047"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-        <TextView
-            android:id="@+id/person_job"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ראש הישיבה"
-            android:textColor="@color/colorJob"
-            android:visibility="gone"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </LinearLayout>
 
     <ImageView

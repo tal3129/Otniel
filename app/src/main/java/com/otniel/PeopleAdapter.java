@@ -45,7 +45,6 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
             PeopleAdapter.ViewHolder viewHolder = new PeopleAdapter.ViewHolder();
             viewHolder.name = contactView.findViewById(R.id.person_name);
             viewHolder.phone = contactView.findViewById(R.id.person_phone);
-            viewHolder.job = contactView.findViewById(R.id.person_job);
             viewHolder.image = contactView.findViewById(R.id.person_img);
             viewHolder.options = contactView.findViewById(R.id.person_menu);
             contactView.setTag(viewHolder);
@@ -78,13 +77,6 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
         else
             holder.name.setBackgroundColor(context.getResources().getColor(android.R.color.transparent));
 
-        if (person.getJob().equals("")) {
-            holder.job.setVisibility(View.GONE);
-        } else {
-            holder.job.setText(person.getJob());
-            holder.job.setVisibility(View.VISIBLE);
-        }
-
         if (!MainActivity.getQuery().equals("") &&
                 person.getName().contains(MainActivity.getQuery())) {
             String query = MainActivity.getQuery();
@@ -99,7 +91,7 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
             String query = MainActivity.getQuery();
             String phone = person.getPhonenumber();
             String phoneNo = phone.replace("-", "");
-            String htmlText;
+            String htmlText = "";
 
             if (phoneNo.indexOf(query) < 4 && phoneNo.indexOf(query) + query.length() >= 4) {
                 htmlText = phone.substring(0, phoneNo.indexOf(query)) + "<font color=#FF4081>" + phone.substring(phoneNo.indexOf(query), phoneNo.indexOf(query) + query.length() + 1) + "</font>" + phone.substring(phoneNo.indexOf(query) + query.length() + 1);
@@ -136,7 +128,7 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
     }
 
     class ViewHolder {
-        public TextView name, phone, job;
+        public TextView name, phone;
         public ImageView image, options;
     }
 }
