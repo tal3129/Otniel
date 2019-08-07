@@ -57,6 +57,7 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     final static int EVERYONE = 8;
     final static int C = 8;
+    final static String NO_IMG_ERROR_MSG = "Object does not exist at location.";
 
     public static boolean call = true;
     public static HashMap<Integer, String> lookupKeys = new HashMap<>();
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // Goes through the current people, downloads images of people
     private void downloadLeftImages() {
         for (Person person : people)
-            if (person.imageState != 1)
+            if (person.imageState == ImageState.NEED_TO_DOWNLOAD)
                 downloadImage(person, false);
     }
 
@@ -185,12 +186,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (localFile != null) {
             person.setPicPath(localFile.getPath());
             storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-                person.imageState = 1;
+                person.imageState = ImageState.COMPLETE;
             }).addOnFailureListener(exception -> {
                 if (!useBig)
                     downloadImage(person, true);
-                else
-                    person.imageState = -1; // If the image could not be loaded
+                else {
+                    Log.d("MyErrorTaggy", exception.getMessage());
+                    if(exception.getMessage().equals(NO_IMG_ERROR_MSG))
+                        person.imageState = ImageState.NO_IMG;
+                    else
+                        person.imageState = ImageState.NEED_TO_DOWNLOAD; // If the image could not be loaded
+                }
             });
         }
     }

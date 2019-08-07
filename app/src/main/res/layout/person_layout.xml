@@ -8,7 +8,7 @@
     android:weightSum="7"
     android:orientation="horizontal">
 
-    <com.otniel.CircleImageView
+    <ImageView
         android:id="@+id/person_img"
         android:layout_width="60dp"
         android:layout_height="60dp"

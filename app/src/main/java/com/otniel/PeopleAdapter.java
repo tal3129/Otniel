@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 /**
@@ -53,8 +55,9 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
         PeopleAdapter.ViewHolder holder = (PeopleAdapter.ViewHolder) contactView.getTag();
 
         holder.image.setImageResource(R.drawable.contact);
-        if (person.imageState != -1)
-            person.loadImage(holder.image);
+        Picasso.get().load(R.drawable.contact).transform(new CircleTransform()).into(holder.image);
+        if (person.imageState != ImageState.NO_IMG)
+            person.loadImage(holder.image, true);
 
         holder.image.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -63,8 +66,8 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
             View dialogView = inflater.inflate(R.layout.go_pro_dialog_layout, null);
             ((TextView) dialogView.findViewById(R.id.person_big_name)).setText(person.getName());
             ((TextView) dialogView.findViewById(R.id.person_big_phone)).setText(person.getPhonenumber());
-            if (person.getPicPath() != null && person.imageState != -1)
-                person.loadImage(dialogView.findViewById(R.id.person_big_img));
+            if (person.getPicPath() != null && person.imageState != ImageState.NO_IMG)
+                person.loadImage(dialogView.findViewById(R.id.person_big_img), false);
             builder.setView(dialogView);
 
             builder.create().show();

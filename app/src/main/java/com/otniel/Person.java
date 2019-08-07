@@ -30,7 +30,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     public static Context context;
     public static SortBy sortBy = SortBy.NAME_A_TO_Z;
-    public int imageState = 0; // 0 - I don't know, 1 - has image, -1 - doesn't have image
+    public ImageState imageState = ImageState.NEED_TO_DOWNLOAD; // 0 - I don't know, 1 - has image, -1 - doesn't have image
 
 
     private int imageVersion = -1;
@@ -152,8 +152,12 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         this.highschool = highschool;
     }
 
-    public void loadImage(ImageView imgView) {
-        Picasso.get().load("file://" + picPath).into(imgView);
+    public void loadImage(ImageView imgView, boolean circle) {
+        if (circle)
+            Picasso.get().load("file://" + picPath).transform(new CircleTransform()).into(imgView);
+        else
+            Picasso.get().load("file://" + picPath).into(imgView);
+
     }
 
     @Override
