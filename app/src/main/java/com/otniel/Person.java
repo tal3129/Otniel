@@ -9,21 +9,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.otniel.Activities.MainActivity;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -39,24 +34,19 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
 
     private int imageVersion = -1;
-    private String name, surname, phonenumber = "", address = "", email = "";
+    private String name;
+    private String surname;
+    private String phonenumber = "";
+    private String address = "";
+    private String highschool = "";
+    private String email = "";
     private int classIndex;
-    private Bitmap img;
     private boolean rabbi;
     private PersonColor color = PersonColor.NONE;
     private String picPath;
 
     public Person() {
 
-    }
-
-    // Returns whether one of the main details of the person was differentFrom
-    public boolean differentFrom(Person other){
-        return  !(name.equals(other.name) &&
-                surname.equals(other.surname) &&
-                phonenumber.equals(other.phonenumber) &&
-                email.equals(other.email) &&
-                imageVersion == other.imageVersion);
     }
 
     public static void deleteContactAuto(String lookupKey) {
@@ -67,6 +57,39 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         } catch (Exception e) {
             System.out.println(Arrays.toString(e.getStackTrace()));
         }
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public boolean isRabbi() {
+        return rabbi;
+    }
+
+    public void setRabbi(boolean rabbi) {
+        this.rabbi = rabbi;
+    }
+
+    // Returns whether one of the main details of the person was differentFrom
+    public boolean differentFrom(Person other) {
+        return !(name.equals(other.name) &&
+                surname.equals(other.surname) &&
+                phonenumber.equals(other.phonenumber) &&
+                email.equals(other.email) &&
+                imageVersion == other.imageVersion);
     }
 
     public String getName() {
@@ -80,16 +103,12 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         }
         return name + " " + surname;
     }
+
     public void setName(String name) {
-        String[] str = name.split(" ");
-        this.name = "";
-        for(int i = 0; i < str.length - 1; i++){
-            this.name += str[i] + (i == str.length - 2 ? "": " ");
-        }
-        this.surname = str[str.length-1];
+        this.name = name;
     }
 
-    public String getNameAlwaysFromName() {
+    public String getFullName() {
         return (rabbi ? "הרב " : "") + name + " " + surname;
     }
 
@@ -101,17 +120,36 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPhonenumber() {
         return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getPhonenumberFromatted() {
+        return phonenumber.replace("-", "");
     }
 
     public int getClassIndex() {
         return classIndex;
     }
 
-    //TODO remove
-    public Bitmap getImage() {
-        return img;
+    public void setClassIndex(int classIndex) {
+        this.classIndex = classIndex;
+    }
+
+    public String getHighschool() {
+        return highschool;
+    }
+
+    public void setHighschool(String highschool) {
+        this.highschool = highschool;
     }
 
     public void loadImage(ImageView imgView) {
@@ -175,21 +213,26 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         return false;
     }
 
-    private void addContactAuto() {
+    public void addContactAuto(String stamp) {
         ArrayList<ContentProviderOperation> operationList = new ArrayList<>();
         operationList.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
                 .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
                 .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
                 .build());
 
+        String val = getFullName();
+        if (!stamp.isEmpty())
+            val += " " + stamp;
         operationList.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                 .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                 .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, getNameAlwaysFromName())
+                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, val)
                 .build());
 
+        Bitmap img = BitmapFactory.decodeFile(picPath);
         if (img != null) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
             img.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] byteArray = stream.toByteArray();
 
@@ -213,6 +256,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
             e.printStackTrace();
         }
     }
+
     public int getImageVersion() {
         return imageVersion;
     }
@@ -229,14 +273,14 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType(ContactsContract.Contacts.CONTENT_VCARD_TYPE);
                 intent.putExtra(Intent.EXTRA_STREAM, vcardUri);
-                intent.putExtra(Intent.EXTRA_SUBJECT, getNameAlwaysFromName());
+                intent.putExtra(Intent.EXTRA_SUBJECT, getFullName());
                 if (delete) {
                     MainActivity.lookupKeys.put(MainActivity.lookupKeys.size(), lookupKey);
                     ((Activity) context).startActivityForResult(intent, MainActivity.lookupKeys.size() - 1);
                 } else
                     (context).startActivity(intent);
             } else {
-                addContactAuto();
+                addContactAuto("");
                 shareContact(true);
             }
         } else {
@@ -247,7 +291,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     private void addContact() {
         ArrayList<ContentValues> data = new ArrayList<>();
-
+        Bitmap img = BitmapFactory.decodeFile(picPath);
         if (img != null) {
             ContentValues row = new ContentValues();
             row.put(ContactsContract.Contacts.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE);
@@ -263,7 +307,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
         Intent intent = new Intent(Intent.ACTION_INSERT, ContactsContract.Contacts.CONTENT_URI);
         intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
 
-        intent.putExtra(ContactsContract.Intents.Insert.NAME, getNameAlwaysFromName());
+        intent.putExtra(ContactsContract.Intents.Insert.NAME, getFullName());
         intent.putExtra(ContactsContract.Intents.Insert.PHONE, phonenumber);
         intent.putExtra(ContactsContract.Intents.Insert.EMAIL, email);
         intent.putExtra(ContactsContract.Intents.Insert.POSTAL, address);
@@ -279,7 +323,7 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
     }
 
     private void sendWhatsapp() {
-        String url = "https://api.whatsapp.com/send?phone="+ 972 + phonenumber;
+        String url = "https://api.whatsapp.com/send?phone=" + 972 + phonenumber;
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         context.startActivity(i);
@@ -311,6 +355,22 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     public void setPicPath(String picPath) {
         this.picPath = picPath;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "imageVersion=" + imageVersion +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phonenumber='" + phonenumber + '\'' +
+                ", address='" + address + '\'' +
+                ", highschool='" + highschool + '\'' +
+                ", email='" + email + '\'' +
+                ", classIndex=" + classIndex +
+                ", rabbi=" + rabbi +
+                ", picPath='" + picPath + '\'' +
+                '}';
     }
 
     public enum PersonColor {

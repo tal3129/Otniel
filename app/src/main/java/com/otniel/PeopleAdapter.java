@@ -14,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.otniel.Activities.MainActivity;
-
 import java.util.ArrayList;
 
 /**
