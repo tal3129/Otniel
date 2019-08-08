@@ -2,13 +2,16 @@ package com.otniel;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -64,13 +67,33 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
 
             LayoutInflater inflater = ((MainActivity) context).getLayoutInflater();
             View dialogView = inflater.inflate(R.layout.go_pro_dialog_layout, null);
-            ((TextView) dialogView.findViewById(R.id.person_big_name)).setText(person.getName());
-            ((TextView) dialogView.findViewById(R.id.person_big_phone)).setText(person.getPhonenumber());
+            TextView tvName = dialogView.findViewById(R.id.person_big_name);
+            TextView tvPhone = dialogView.findViewById(R.id.person_big_phone);
+            TextView tvAdress = dialogView.findViewById(R.id.person_big_address);
+
+            tvName.setText(person.getName());
+            tvPhone.setText(person.getPhonenumber());
+
+            if (!person.getAddress().isEmpty())
+                tvAdress.setText("מ" + person.getAddress());
+            if (!person.getHighschool().isEmpty()) {
+                tvAdress.setText(tvAdress.getText() + ", למד ב"+ person.getHighschool());
+            }
+
+            ((TextView) dialogView.findViewById(R.id.tvClassIndex)).setText(person.getClassIndexString());
             if (person.getPicPath() != null && person.imageState != ImageState.NO_IMG)
                 person.loadImage(dialogView.findViewById(R.id.person_big_img), false);
             builder.setView(dialogView);
+            Dialog d = builder.create();
+            d.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
-            builder.create().show();
+            dialogView.findViewById(R.id.layDetails).setOnClickListener(view -> d.dismiss());
+            d.show();
+
+            WindowManager.LayoutParams lp = d.getWindow().getAttributes();
+            lp.dimAmount = 0.75f;
+            d.getWindow().setAttributes(lp);
+            d.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         });
 
         if (person.getColor() == Person.PersonColor.YELLOW)

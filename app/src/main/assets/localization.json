@@ -1,0 +1,2894 @@
+{
+  "People": [
+    {
+      "surname": "אלבוים",
+      "name": "אסף",
+      "address": "מזכרת בתיה",
+      "email": "assafelbaum1@gmail.com",
+      "phonenumber": "08-9417360",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "אנגל",
+      "name": "ניתאי",
+      "address": "נחושה",
+      "email": "nitay.engel@gmail.com",
+      "phonenumber": "058-7977904",
+      "highschool": "אמית נחשון",
+      "classIndex": 1
+    },
+    {
+      "surname": "אנטופולסקי",
+      "name": "שלמה",
+      "address": "נוקדים",
+      "email": "antosh56@gmail.com",
+      "phonenumber": "053-4254772",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "בייער גמולקה",
+      "name": "נעם",
+      "address": "ירושלים",
+      "email": "noambg1@gmail.com",
+      "phonenumber": "054-9469119",
+      "highschool": "הרטמן",
+      "classIndex": 1
+    },
+    {
+      "surname": "בלאו",
+      "name": "צדוק",
+      "address": "אלון שבות",
+      "email": "zadokblau@gmail.com",
+      "phonenumber": "058-6061074",
+      "highschool": "חורב",
+      "classIndex": 1
+    },
+    {
+      "surname": "בלום",
+      "name": "שקד",
+      "address": "ד.נ. הר חברון",
+      "email": "shakedbloom100@gmail.com",
+      "phonenumber": "058-6072227",
+      "highschool": "נווה שמואל",
+      "classIndex": 1
+    },
+    {
+      "surname": "בן פזי",
+      "name": "איתמר",
+      "address": "נחושה",
+      "email": "itamar761@gmail.com",
+      "phonenumber": "050-3356335",
+      "highschool": "אמית נחשון",
+      "classIndex": 1
+    },
+    {
+      "surname": "בן תורה",
+      "name": "הלל",
+      "address": "ד.נ. מטה יהודה",
+      "email": "hillelbentorahi@gmail.com",
+      "phonenumber": "058-5703282",
+      "highschool": "מכינה",
+      "classIndex": 1
+    },
+    {
+      "surname": "בר אשר",
+      "name": "יאיר",
+      "address": "מצפה אילן",
+      "email": "barasheryair@gmail.com",
+      "phonenumber": "054-7761141",
+      "highschool": "אורות הזורעים",
+      "classIndex": 1
+    },
+    {
+      "surname": "ברבי",
+      "name": "חיים",
+      "address": "אפרת",
+      "email": "barbyhaim12@gmail.com",
+      "phonenumber": "054-8138891",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "ברהולץ",
+      "name": "נדב",
+      "address": "עפרה",
+      "email": "nadavbrxx2@gmail.com",
+      "phonenumber": "054-2528228",
+      "highschool": "נווה שמואל",
+      "classIndex": 1
+    },
+    {
+      "surname": "ברוך",
+      "name": "אליאב",
+      "address": "באר שבע",
+      "email": "eliav.brock@gmail.com",
+      "phonenumber": "053-4295739",
+      "highschool": "מכון לב",
+      "classIndex": 1
+    },
+    {
+      "surname": "גולדברג",
+      "name": "עידו",
+      "address": "בית שמש",
+      "email": "idogoldberg12@gmail.com",
+      "phonenumber": "058-7995346",
+      "highschool": "אמית נחשון",
+      "classIndex": 1
+    },
+    {
+      "surname": "גימפל",
+      "name": "אלישע",
+      "address": "אפרת",
+      "email": "elishagimpel@gmail.com",
+      "phonenumber": "054-3916702",
+      "highschool": "חורב",
+      "classIndex": 1
+    },
+    {
+      "surname": "דה לוי",
+      "name": "שהם",
+      "address": "בני ראם",
+      "email": "shoham5707@gmail.com",
+      "phonenumber": "055-2272923",
+      "highschool": "אורות הזורעים",
+      "classIndex": 1
+    },
+    {
+      "surname": "הורדס",
+      "name": "יאיר",
+      "address": "ירושלים",
+      "email": "yaireh123@gmail.com",
+      "phonenumber": "058-6229968",
+      "highschool": "חורב",
+      "classIndex": 1
+    },
+    {
+      "surname": "הרפז",
+      "name": "ישראל",
+      "address": "ירושלים",
+      "email": "israelharpaz907@gmail.com",
+      "phonenumber": "052-6218054",
+      "highschool": "שפע",
+      "classIndex": 1
+    },
+    {
+      "surname": "הרשטיק",
+      "name": "קובי",
+      "address": "ניצן",
+      "email": "ko1234563@gmail.com",
+      "phonenumber": "050-5712342",
+      "highschool": "אור עתניאל",
+      "classIndex": 1
+    },
+    {
+      "surname": "וולף",
+      "name": "שלום",
+      "address": "ירושלים",
+      "email": "shalomwolff@gmail.com",
+      "phonenumber": "058-6729954",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "וורטמן",
+      "name": "איתן",
+      "address": "בית שמש",
+      "email": "eitanwortman11@gmail.com",
+      "phonenumber": "058-6136868",
+      "highschool": "אמית נחשון",
+      "classIndex": 1
+    },
+    {
+      "surname": "חדד",
+      "name": "ינון",
+      "address": "אלון שבות",
+      "email": "yinonhadad1@gmail.com",
+      "phonenumber": "058-6633627",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "טייב",
+      "name": "צבי מאיר",
+      "address": "ירושלים",
+      "email": "tsvitaieb@gmail.com",
+      "phonenumber": "054-3106389",
+      "classIndex": 1
+    },
+    {
+      "surname": "טיירי",
+      "name": "פורת חיים",
+      "address": "פתח תקווה",
+      "email": "poratcacha@gmail.com",
+      "phonenumber": "052-3423912",
+      "highschool": "דרכי נעם",
+      "classIndex": 1
+    },
+    {
+      "surname": "טרופר",
+      "name": "לביא",
+      "address": "בית שמש",
+      "email": "tropperlavi@gmail.com",
+      "phonenumber": "053-3405870",
+      "highschool": "אמי\"ת נחשון",
+      "classIndex": 1
+    },
+    {
+      "surname": "ישראלי",
+      "name": "אורן",
+      "address": "ירושלים",
+      "email": "israeli.oren@gmail.com",
+      "phonenumber": "054-2405654",
+      "highschool": "הימלפרב",
+      "classIndex": 1
+    },
+    {
+      "surname": "כהן",
+      "name": "אביעד שלום",
+      "address": "ירוחם",
+      "email": "aviadcohen1234@gmail.com",
+      "phonenumber": "054-2636066",
+      "highschool": "דימונה",
+      "classIndex": 1
+    },
+    {
+      "surname": "כהן",
+      "name": "אהרן יצחק",
+      "address": "בית שמש",
+      "email": "aychct@gmail.com",
+      "phonenumber": "052-5782828",
+      "highschool": "שעלי תורה",
+      "classIndex": 1
+    },
+    {
+      "surname": "כץ",
+      "name": "יוני",
+      "address": "אלון שבות",
+      "email": "yoni287@gmail.com",
+      "phonenumber": "058-7846881",
+      "highschool": "אורות יהודה",
+      "classIndex": 1
+    },
+    {
+      "surname": "לב-ציון",
+      "name": "אביעד",
+      "address": "אלון שבות",
+      "email": "aviadadl12@gmail.com",
+      "phonenumber": "058-4454915",
+      "highschool": "נווה שמואל",
+      "classIndex": 1
+    },
+    {
+      "surname": "לוי",
+      "name": "אופק",
+      "address": "כפר הרא\"ה",
+      "email": "Tupekuh@gmail.com",
+      "phonenumber": "058-6024682",
+      "highschool": "כפר הרא\"ה",
+      "classIndex": 1
+    },
+    {
+      "surname": "לוי",
+      "name": "אורי",
+      "address": "מודיעין",
+      "email": "orilevy753@gmail.com",
+      "phonenumber": "050-2054043",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 1
+    },
+    {
+      "surname": "לוי",
+      "name": "אריאל",
+      "address": "מודיעין מכבים רעות",
+      "email": "ariellev400@gmail.com",
+      "phonenumber": "050-8188958",
+      "highschool": "אמית מודיעין",
+      "classIndex": 1
+    },
+    {
+      "surname": "לייב",
+      "name": "בן",
+      "address": "בית שמש",
+      "email": "ben@leib.net",
+      "phonenumber": "053-5206712",
+      "highschool": "אמית נחשון",
+      "classIndex": 1
+    },
+    {
+      "surname": "לייבו",
+      "name": "יואב",
+      "address": "בית שמש",
+      "email": "hutc567@gmail.com",
+      "phonenumber": "058-6660812",
+      "highschool": "שעלי תורה",
+      "classIndex": 1
+    },
+    {
+      "surname": "מייזל",
+      "name": "מידד",
+      "address": "סנסנה",
+      "email": "maidad.maissel@gmail.com",
+      "phonenumber": "055-8865311",
+      "highschool": "מכון לב",
+      "classIndex": 1
+    },
+    {
+      "surname": "מילסטון",
+      "name": "יהודה",
+      "address": "אלון שבות",
+      "email": "y.m.m052@gmail.com",
+      "phonenumber": "058-4070042",
+      "highschool": "נווה שמואל",
+      "classIndex": 1
+    },
+    {
+      "surname": "מרק",
+      "name": "פדיה",
+      "address": "עתניאל",
+      "email": "pdayam.m@gmail.com",
+      "phonenumber": "058-5665207",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "נוביק",
+      "name": "אליעזר",
+      "address": "אפרת",
+      "email": "eliezernovick@gmail.com",
+      "phonenumber": "058-6793707",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "נויבירט",
+      "name": "חיים",
+      "address": "רעננה",
+      "email": "chaiminoy01@gmail.com",
+      "phonenumber": "058-4567686",
+      "highschool": "יב\"ע רעננה",
+      "classIndex": 1
+    },
+    {
+      "surname": "ניצן",
+      "name": "קובי",
+      "address": "בית שמש",
+      "email": "k029990736@gmail.com",
+      "phonenumber": "054-6661459",
+      "highschool": "אמית נחשון",
+      "classIndex": 1
+    },
+    {
+      "surname": "סגל",
+      "name": "יוחאי יששכר",
+      "address": "מודיעין",
+      "email": "yohaisegal@gmail.com",
+      "phonenumber": "054-9474890",
+      "highschool": "אמי\"ת מודיעין",
+      "classIndex": 1
+    },
+    {
+      "surname": "סולומון",
+      "name": "אורי",
+      "address": "נגוהות",
+      "email": "ori9962@gmail.com",
+      "phonenumber": "058-4040024",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "ספיר",
+      "name": "עידו",
+      "address": "אלון שבות",
+      "email": "idosapir08@gmail.com",
+      "phonenumber": "054-3923475",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "סרלואי",
+      "name": "שיר",
+      "address": "בני דקלים",
+      "email": "shirser121@gmail.com",
+      "phonenumber": "054-6642018",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "עקיבא",
+      "name": "יובל",
+      "address": "קיבוץ סעד",
+      "email": "yuvalm2001@gmail.com",
+      "phonenumber": "058-6070423",
+      "highschool": "כפר מימון",
+      "classIndex": 1
+    },
+    {
+      "surname": "פרזון",
+      "name": "יצחק",
+      "address": "ירושלים",
+      "email": "itzak2001@gmail.com",
+      "phonenumber": "050-5778381",
+      "highschool": "שפע",
+      "classIndex": 1
+    },
+    {
+      "surname": "פריימן",
+      "name": "איתמר",
+      "address": "זכרון יעקב",
+      "email": "itamar.freiman@gmail.com",
+      "phonenumber": "052-3523453",
+      "highschool": "נווה שמואל",
+      "classIndex": 1
+    },
+    {
+      "surname": "ציגלר",
+      "name": "אריאל",
+      "address": "אלון שבות",
+      "email": "ariel.d.ziegler@gmail.com",
+      "phonenumber": "0543103870",
+      "highschool": "נווה שמואל",
+      "classIndex": 1
+    },
+    {
+      "surname": "קוינט",
+      "name": "אורי",
+      "address": "רחובות",
+      "email": "orikvint1@gmail.com",
+      "phonenumber": "054-2722744",
+      "highschool": "אמי\"ת עמיחי",
+      "classIndex": 1
+    },
+    {
+      "surname": "קיסר",
+      "name": "משגב",
+      "address": "קרני שומרון",
+      "email": "misgavk123@gmail.com",
+      "phonenumber": "058-7744022",
+      "highschool": "מדרשיית נעם",
+      "classIndex": 1
+    },
+    {
+      "surname": "קליבנסקי",
+      "name": "רואי",
+      "address": "רמת גן",
+      "email": "kli.roee@gmail.com",
+      "phonenumber": "058-7788233",
+      "highschool": "אורות הזורעים",
+      "classIndex": 1
+    },
+    {
+      "surname": "רוטנברג",
+      "name": "יואב",
+      "address": "קרני שומרון",
+      "email": "yoavrote60@gmail.com",
+      "phonenumber": "058-7920194",
+      "highschool": "אורות הזורעים",
+      "classIndex": 1
+    },
+    {
+      "surname": "רותם",
+      "name": "יונתן",
+      "address": "אלעזר",
+      "email": "yonrotem@gmail.com",
+      "phonenumber": "058-7557123",
+      "highschool": "אורות יהודה",
+      "classIndex": 1
+    },
+    {
+      "surname": "רזניק",
+      "name": "אביב",
+      "address": "מודיעין מכבים רעות",
+      "email": "fazzyresnick@gmail.com",
+      "phonenumber": "054-6964889",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 1
+    },
+    {
+      "surname": "ריכטר",
+      "name": "ישי",
+      "address": "גבעת שמואל",
+      "email": "ishai5344@gmail.com",
+      "phonenumber": "054-2445455",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "רפפורט",
+      "name": "יונתן",
+      "address": "בית שמש",
+      "email": "yonir5432@gmail.com",
+      "phonenumber": "0535264396",
+      "highschool": "אהבת ישראל",
+      "classIndex": 1
+    },
+    {
+      "surname": "שהם",
+      "name": "צור",
+      "address": "ירוחם",
+      "email": "tsur.sho@gmail.com",
+      "phonenumber": "054-9724113",
+      "highschool": "בלבב שלם",
+      "classIndex": 1
+    },
+    {
+      "surname": "שוורץ",
+      "name": "יובל",
+      "address": "גבעת שמואל",
+      "email": "yuvalschwartz2@gmail.com",
+      "phonenumber": "052-7721282",
+      "highschool": "של\"פ קרית שמונה",
+      "classIndex": 1
+    },
+    {
+      "surname": "שטיינמץ",
+      "name": "אלעד רפאל",
+      "address": "מודיעין",
+      "email": "eladsteinmetz0@gmail.com",
+      "phonenumber": "054-3976428",
+      "highschool": "מכון לב",
+      "classIndex": 1
+    },
+    {
+      "surname": "שמידמן",
+      "name": "עמנואל",
+      "address": "אלון שבות",
+      "email": "immanuel.shmidman@gmail.com",
+      "phonenumber": "058-6662923",
+      "highschool": "חורב",
+      "classIndex": 1
+    },
+    {
+      "surname": "שנור",
+      "name": "יובל",
+      "address": "ירושלים",
+      "email": "huckabur@gmail.com",
+      "phonenumber": "058-5858112",
+      "highschool": "שפע",
+      "classIndex": 1
+    },
+    {
+      "surname": "שפירר",
+      "name": "נחי",
+      "address": "נווה דניאל",
+      "email": "Cp3njs@gmail.com",
+      "phonenumber": "0523640920",
+      "highschool": "נווה שמואל",
+      "classIndex": 1
+    },
+    {
+      "surname": "שפר",
+      "name": "נטע",
+      "address": "ד.נ. לכיש",
+      "email": "netasheffer111@gmail.com",
+      "phonenumber": "054-3487465",
+      "highschool": "צביה דימונה",
+      "classIndex": 1
+    },
+    {
+      "surname": "שרגאי",
+      "name": "יובל שלמה",
+      "address": "ירושלים",
+      "email": "yuvalshragai@gmail.com",
+      "phonenumber": "050-6422434",
+      "highschool": "שפע",
+      "classIndex": 1
+    },
+    {
+      "surname": "שרקי",
+      "name": "ישי",
+      "address": "ירושלים",
+      "email": "yishaisherki@gmail.com",
+      "phonenumber": "053-7207328",
+      "highschool": "מקור חיים",
+      "classIndex": 1
+    },
+    {
+      "surname": "אברג'ל",
+      "name": "יאיר",
+      "address": "גבעת שמואל",
+      "email": "yair.abargel@hotmail.com",
+      "phonenumber": "054-4567898",
+      "highschool": "גבעת שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "אברסין",
+      "name": "יעקב נריה",
+      "address": "אפרת",
+      "email": "yaakovneria99@gmail.com",
+      "phonenumber": "054-7994703",
+      "highschool": "נווה שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "אדלר",
+      "name": "אריאל",
+      "address": "גבעת שמואל",
+      "email": "arielanexus@gmail.com",
+      "phonenumber": "058-7878206",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "אדמס",
+      "name": "מאיר",
+      "address": "אפרת",
+      "email": "adamsmein@gmail.com",
+      "phonenumber": "058-7896437",
+      "highschool": "נווה שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "אהרוני",
+      "name": "שילה",
+      "address": "בית חורון",
+      "email": "shiloaharoni@gmail.com",
+      "phonenumber": "054-5990632",
+      "highschool": "נווה שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "אודנהיימר",
+      "name": "יעקב",
+      "address": "אפרת",
+      "email": "yyo.200088@gmail.com",
+      "phonenumber": "058-4933842",
+      "highschool": "נווה שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "אוליבן",
+      "name": "אריה צבי",
+      "address": "ירושלים",
+      "email": "aryeoliven@gmail.com",
+      "phonenumber": "054-3488430",
+      "highschool": "כפר הרא\"ה",
+      "classIndex": 2
+    },
+    {
+      "surname": "אייזן",
+      "name": "בארי",
+      "address": "אלון שבות",
+      "email": "beery2121@gmail.com",
+      "phonenumber": "050-6685071",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "אילפלד",
+      "name": "אליהו",
+      "address": "בית שמש",
+      "email": "elikofeld@gmail.com",
+      "phonenumber": "054-9743858",
+      "highschool": "שעלי תורה",
+      "classIndex": 2
+    },
+    {
+      "surname": "אלוש",
+      "name": "אלרן",
+      "address": "מודיעין-מכבים-רעות",
+      "email": "elranalush8@gmail.com",
+      "phonenumber": "0509704031",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 2
+    },
+    {
+      "surname": "אלקין",
+      "name": "יוסף עקיבא (רינה)",
+      "address": "אלון שבות",
+      "email": "osyaelkin@gmail.com",
+      "phonenumber": "054-4623582",
+      "highschool": "נווה שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "ארמן",
+      "name": "יצחק (איצי)",
+      "address": "בית שמש",
+      "email": "yitzyehrman@gmail.com",
+      "phonenumber": "0587807004",
+      "highschool": "ישל\"צ",
+      "classIndex": 2
+    },
+    {
+      "surname": "באומגרטן",
+      "name": "דביר",
+      "address": "ירוחם",
+      "email": "dvir.baum@gmail.com",
+      "phonenumber": "053-5283353",
+      "highschool": "בלבב שלם ירוחם",
+      "classIndex": 2
+    },
+    {
+      "surname": "בורנשטיין",
+      "name": "אלון צבי",
+      "address": "אלעזר",
+      "email": "alonbo12@gmail.com",
+      "phonenumber": "058-7534501",
+      "highschool": "אורות יהודה",
+      "classIndex": 2
+    },
+    {
+      "surname": "בן גדליה",
+      "name": "נעמן שמואל",
+      "address": "בית חגי",
+      "email": "naaman5336@gmail.com",
+      "phonenumber": "052-7710102",
+      "highschool": "קרית ארבע",
+      "classIndex": 2
+    },
+    {
+      "surname": "בן טוב",
+      "name": "תומר",
+      "address": "אדרת",
+      "email": "tomer@derech-avot.org.il",
+      "phonenumber": "058-5599366",
+      "highschool": "דרך אבות",
+      "classIndex": 2
+    },
+    {
+      "surname": "בן מנשה",
+      "name": "אוריאל",
+      "address": "קשת",
+      "email": "oriel0192@gmail.com",
+      "phonenumber": "0586960591",
+      "highschool": "חיספין",
+      "classIndex": 2
+    },
+    {
+      "surname": "בן שחר",
+      "name": "איתמר",
+      "address": "פתח תקווה",
+      "email": "itamar20bs@gmail.com",
+      "phonenumber": "053-6295572",
+      "highschool": "נחלים",
+      "classIndex": 2
+    },
+    {
+      "surname": "בן שימול",
+      "name": "ניתאי",
+      "address": "מודיעין-מכבים-רעות",
+      "email": "nitnit431@gmail.com",
+      "phonenumber": "054-2238955",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 2
+    },
+    {
+      "surname": "בר אילן",
+      "name": "אליהו לב",
+      "address": "רחובות",
+      "email": "eliyahu444@gmail.com",
+      "phonenumber": "052-4656552",
+      "highschool": "אמי\"ת עמיחי רחובות",
+      "classIndex": 2
+    },
+    {
+      "surname": "ברמן",
+      "name": "בנימין",
+      "address": "נווה דניאל",
+      "email": "binyaminberman@yahoo.com",
+      "phonenumber": "0547441560",
+      "highschool": "אהבת חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "ברמן",
+      "name": "יקיר",
+      "address": "בית שמש",
+      "email": "yakir.berman@gmail.com",
+      "phonenumber": "054-9419088",
+      "highschool": "אמי\"ת דביר",
+      "classIndex": 2
+    },
+    {
+      "surname": "ברנד",
+      "name": "נדב",
+      "address": "נחושה",
+      "email": "nadavbrand1@gmail.com",
+      "phonenumber": "058-4883329",
+      "highschool": "דרך אבות",
+      "classIndex": 2
+    },
+    {
+      "surname": "גבל",
+      "name": "עברי",
+      "address": "נחושה",
+      "email": "ivrige08@gmail.com",
+      "phonenumber": "054-4801848",
+      "highschool": "חורב",
+      "classIndex": 2
+    },
+    {
+      "surname": "גודינגר",
+      "name": "ידידיה",
+      "address": "פתח תקווה",
+      "email": "godingerasd@gmail.com",
+      "phonenumber": "052-6691233",
+      "highschool": "אורות הזורעים",
+      "classIndex": 2
+    },
+    {
+      "surname": "גוזמן",
+      "name": "דניאל",
+      "address": "חיפה",
+      "email": "Danielguzman052@gmail.com",
+      "phonenumber": "058-4236706",
+      "highschool": "יבנה חיפה",
+      "classIndex": 2
+    },
+    {
+      "surname": "גולדברג",
+      "name": "חיים",
+      "address": "חשמונאים",
+      "email": "cgoldberg613@gmail.com",
+      "phonenumber": "058-6027911",
+      "highschool": "נר תמיד",
+      "classIndex": 2
+    },
+    {
+      "surname": "גייגר",
+      "name": "מאיר יהודה",
+      "address": "ירושלים",
+      "email": "meir.y.geiger@gmail.com",
+      "phonenumber": "058-6527069",
+      "highschool": "חורב",
+      "classIndex": 2
+    },
+    {
+      "surname": "ג'יסון",
+      "name": "אלישי",
+      "address": "ראש צורים",
+      "email": "elishaij@gmail.com",
+      "phonenumber": "050-3039106",
+      "highschool": "נווה שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "גלפרין",
+      "name": "יצחק",
+      "address": "ירושלים",
+      "email": "galperin8@gmail.com",
+      "phonenumber": "0556609524",
+      "highschool": "שפע",
+      "classIndex": 2
+    },
+    {
+      "surname": "גרין",
+      "name": "הראל",
+      "address": "קרני שומרון",
+      "email": "harelgreen@gmail.com",
+      "phonenumber": "058-7263236",
+      "highschool": "הליכותעולם",
+      "classIndex": 2
+    },
+    {
+      "surname": "הומינר",
+      "name": "איתי",
+      "address": "שוהם",
+      "email": "houminer29@gmail.com",
+      "phonenumber": "053-4250403",
+      "highschool": "כפר גנים",
+      "classIndex": 2
+    },
+    {
+      "surname": "הימן",
+      "name": "יאיר",
+      "address": "ד.נ. רמת הגולן",
+      "email": "yair5867@gmail.com",
+      "phonenumber": "054-5315943",
+      "highschool": "חספין",
+      "classIndex": 2
+    },
+    {
+      "surname": "הרפנס",
+      "name": "מנחם",
+      "address": "באר שבע",
+      "email": "menachem.harpeness@gmail.com",
+      "phonenumber": "058-6522338",
+      "highschool": "בלבב שלם",
+      "classIndex": 2
+    },
+    {
+      "surname": "הרשקוביץ",
+      "name": "יהודה",
+      "address": "בית שמש",
+      "email": "yehudah12@gmail.com",
+      "phonenumber": "058-6274006",
+      "highschool": "שעלי תורה",
+      "classIndex": 2
+    },
+    {
+      "surname": "וינברג",
+      "name": "ישיב",
+      "address": "תקוע",
+      "email": "yashiv.w@gmail.com",
+      "phonenumber": "058-5136999",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "וינוגרד",
+      "name": "יהונתן",
+      "address": "ירושלים",
+      "email": "jonywino@gmail.com",
+      "phonenumber": "058-5237088",
+      "highschool": "חורב",
+      "classIndex": 2
+    },
+    {
+      "surname": "זלינגר",
+      "name": "מנחם",
+      "address": "ניצן",
+      "email": "menachem.zelinger@gmail.com",
+      "phonenumber": "054-6832523",
+      "highschool": "סוסיא",
+      "classIndex": 2
+    },
+    {
+      "surname": "חדד",
+      "name": "נדב יהושע",
+      "address": "צופים",
+      "email": "nadav749@gmail.com",
+      "phonenumber": "0505430034",
+      "highschool": "חיספין",
+      "classIndex": 2
+    },
+    {
+      "surname": "חורב",
+      "name": "אילון",
+      "address": "מעגלים",
+      "email": "ehlon18@gmail.com",
+      "phonenumber": "058-6633478",
+      "highschool": "ירוחם",
+      "classIndex": 2
+    },
+    {
+      "surname": "חריר",
+      "name": "אוראל",
+      "address": "אלעד",
+      "email": "orelharir@gmail.com;Orelharir@gmail.com",
+      "phonenumber": "053-5261619",
+      "highschool": "נחלים",
+      "classIndex": 2
+    },
+    {
+      "surname": "טאוב",
+      "name": "נדב",
+      "address": "חשמונאים",
+      "email": "nadavjj@gmail.com",
+      "phonenumber": "0556647430",
+      "highschool": "נר תמיד",
+      "classIndex": 2
+    },
+    {
+      "surname": "טקאץ'",
+      "name": "הלל",
+      "address": "ירושלים",
+      "email": "hileltkach@gmail.com",
+      "phonenumber": "054-7362710",
+      "highschool": "חורב",
+      "classIndex": 2
+    },
+    {
+      "surname": "טרנר",
+      "name": "רועי",
+      "address": "גבעת שמואל",
+      "email": "roiterner17@gmail.com",
+      "phonenumber": "054-2150099",
+      "highschool": "נחלים",
+      "classIndex": 2
+    },
+    {
+      "surname": "יאסו",
+      "name": "ידידיה",
+      "address": "בית שמש",
+      "email": "yedidya12321@gmail.com",
+      "phonenumber": "053-3393779",
+      "highschool": "שעלי תורה",
+      "classIndex": 2
+    },
+    {
+      "surname": "יעקב",
+      "name": "ירמיהו",
+      "email": "jeremyjacob101@gmail.com",
+      "phonenumber": "053-7148073",
+      "classIndex": 2
+    },
+    {
+      "surname": "ירחי",
+      "name": "דוד אורי",
+      "address": "אלון שבות",
+      "email": "davidyar321@gmail.com",
+      "phonenumber": "058-5938190",
+      "highschool": "נווה שמואל וראשית ת\"א",
+      "classIndex": 2
+    },
+    {
+      "surname": "ישמח משה",
+      "name": "דביר",
+      "address": "פתח תקווה",
+      "email": "dvirym@gmail.com",
+      "phonenumber": "0525393201",
+      "highschool": "למרחב פתח תקווה",
+      "classIndex": 2
+    },
+    {
+      "surname": "כהן",
+      "name": "יאיר",
+      "address": "שערי תקוה",
+      "email": "yair143cohen@gmail.com",
+      "phonenumber": "054-2124412",
+      "highschool": "אמית בר אילן",
+      "classIndex": 2
+    },
+    {
+      "surname": "לב ארי",
+      "name": "ידידיה",
+      "address": "ירושלים",
+      "email": "yedidya917@gmail.com",
+      "phonenumber": "054-7131670",
+      "highschool": "ישל\"צ",
+      "classIndex": 2
+    },
+    {
+      "surname": "לדר",
+      "name": "אלישע חיים",
+      "phonenumber": "0587921657",
+      "highschool": "הליכותעולם",
+      "classIndex": 2
+    },
+    {
+      "surname": "לוי",
+      "name": "אור",
+      "address": "כוכב יאיר",
+      "email": "levyor8@gmail.com",
+      "phonenumber": "050-8195739",
+      "highschool": "תורה ומדע כפר סבא",
+      "classIndex": 2
+    },
+    {
+      "surname": "לוי",
+      "name": "טל",
+      "address": "מודיעין",
+      "phonenumber": "0509703996",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 2
+    },
+    {
+      "surname": "לוין",
+      "name": "איתן",
+      "address": "בית שמש",
+      "email": "firemaneytan@gmail.com",
+      "phonenumber": "054-2025954",
+      "highschool": "חורב",
+      "classIndex": 2
+    },
+    {
+      "surname": "ליכטנשטיין",
+      "name": "יוסף דוב",
+      "address": "בית שמש",
+      "email": "dovilic013@gmail.com",
+      "phonenumber": "058-4991998",
+      "highschool": "של\"פ קרית שמונה",
+      "classIndex": 2
+    },
+    {
+      "surname": "ליפצר",
+      "name": "אריאל",
+      "address": "מודיעין-מכבים-רעות",
+      "email": "lipczer@gmail.com",
+      "phonenumber": "058-7714230",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 2
+    },
+    {
+      "surname": "מאור",
+      "name": "יונתן",
+      "address": "ירושלים",
+      "email": "yonatanmaor2@gmail.com",
+      "phonenumber": "058-6111981",
+      "highschool": "חורב",
+      "classIndex": 2
+    },
+    {
+      "surname": "מאיר",
+      "name": "עקיבא",
+      "address": "עתניאל",
+      "email": "akivameir99@gmail.com",
+      "phonenumber": "0584711214",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "מוסקוביץ",
+      "name": "נעם",
+      "address": "אלון שבות",
+      "email": "noamosko77@gmail.com",
+      "phonenumber": "054-3718200",
+      "highschool": "דרך אבות",
+      "classIndex": 2
+    },
+    {
+      "surname": "מושקין",
+      "name": "עידן",
+      "address": "טלמון",
+      "email": "idanmuskin@gmail.com",
+      "phonenumber": "058-4726396",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "מזרחי",
+      "name": "אליהו",
+      "address": "גבעת שמואל",
+      "email": "eliyahummm@gmail.com",
+      "phonenumber": "054-4448713",
+      "highschool": "רמת גן",
+      "classIndex": 2
+    },
+    {
+      "surname": "מלצר",
+      "name": "אביעד",
+      "address": "נתניה",
+      "email": "Aviad.mel24@gmail.com",
+      "phonenumber": "054-9724356",
+      "highschool": "כפר הרא\"ה",
+      "classIndex": 2
+    },
+    {
+      "surname": "משלוף",
+      "name": "מתן",
+      "address": "נוקדים",
+      "email": "matan.mescheloff@gmail.com",
+      "phonenumber": "054-2214730",
+      "highschool": "מצפה רמון",
+      "classIndex": 2
+    },
+    {
+      "surname": "נאימרק",
+      "name": "יהודה",
+      "address": "ירושלים",
+      "email": "ybnaimark@gmail.com",
+      "phonenumber": "052-8406019",
+      "highschool": "קרית נוער",
+      "classIndex": 2
+    },
+    {
+      "surname": "נגן",
+      "name": "יונתן",
+      "address": "עתניאל",
+      "email": "yenagen1@gmail.com",
+      "phonenumber": "053-7233693",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "נווה",
+      "name": "יצהר",
+      "address": "מעלה מכמש",
+      "email": "itzharnave@gmail.com",
+      "phonenumber": "058-6109020",
+      "highschool": "בני בנימין בית אל",
+      "classIndex": 2
+    },
+    {
+      "surname": "נתן",
+      "name": "איתמר",
+      "address": "ירושלים",
+      "email": "itamarnatan26@gmail.com",
+      "phonenumber": "055-2288168",
+      "highschool": "חורב",
+      "classIndex": 2
+    },
+    {
+      "surname": "סטולוביץ",
+      "name": "מעוז",
+      "address": "כפר ויתקין",
+      "email": "maozsto@gmail.com",
+      "phonenumber": "054-9130933",
+      "highschool": "כפר הרא\"ה",
+      "classIndex": 2
+    },
+    {
+      "surname": "סימן טוב",
+      "name": "נתנאל",
+      "address": "שערי תקווה",
+      "email": "Netanel462001050@gmail.com",
+      "phonenumber": "0533036932",
+      "highschool": "אלקנה",
+      "classIndex": 2
+    },
+    {
+      "surname": "סירקין",
+      "name": "עדו",
+      "address": "גבעת שמואל",
+      "email": "idosyr@gmail.com",
+      "phonenumber": "0585324346",
+      "highschool": "גבעת שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "פולק",
+      "name": "דביר",
+      "address": "ראש צורים",
+      "email": "dvirpollack@gmail.com",
+      "phonenumber": "054-6700651",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "פילבר",
+      "name": "נריה שי (שלמה)",
+      "address": "ירושלים",
+      "email": "brhvah1@gmail.com",
+      "phonenumber": "052-7710205",
+      "highschool": "סוסיא",
+      "classIndex": 2
+    },
+    {
+      "surname": "פין",
+      "name": "אלחנן",
+      "address": "אפרת",
+      "email": "elchananfinn@gmail.com",
+      "phonenumber": "0584258200",
+      "highschool": "קרית ארבע",
+      "classIndex": 2
+    },
+    {
+      "surname": "פלדמן",
+      "name": "שלום",
+      "address": "נווה דניאל",
+      "email": "shafeld1@gmail.com",
+      "phonenumber": "055-6617138",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "פרלוב",
+      "name": "עקיבא אפרים",
+      "address": "יד בנימין",
+      "phonenumber": "058-5325320",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "פרץ",
+      "name": "בניה",
+      "address": "מעלה אדומים",
+      "email": "bnaiape11@gmail.com",
+      "phonenumber": "054-2201427",
+      "highschool": "חורב",
+      "classIndex": 2
+    },
+    {
+      "surname": "צוריאל",
+      "name": "אלחנן",
+      "address": "אלון שבות",
+      "email": "100elchanan@gmail.com",
+      "phonenumber": "055-6699514",
+      "highschool": "נווה שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "צינקין",
+      "name": "מתניה",
+      "address": "נתניה",
+      "email": "zmatanya18@gmail.com",
+      "phonenumber": "050-7743307",
+      "highschool": "נתניה",
+      "classIndex": 2
+    },
+    {
+      "surname": "קאהן",
+      "name": "ג'וש",
+      "email": "joshuakohn123@gmail.com",
+      "phonenumber": "058-7714120",
+      "classIndex": 2
+    },
+    {
+      "surname": "קובלינר",
+      "name": "אברהם שלום",
+      "address": "שדה אליהו",
+      "email": "avraham894@gmail.com",
+      "phonenumber": "054-5640894",
+      "highschool": "שק\"ד",
+      "classIndex": 2
+    },
+    {
+      "surname": "קופלנד",
+      "name": "נווה",
+      "address": "עתניאל",
+      "email": "navecope@gmail.com",
+      "phonenumber": "058-4963572",
+      "highschool": "אור עתניאל",
+      "classIndex": 2
+    },
+    {
+      "surname": "קיין",
+      "name": "איתי",
+      "address": "ירושלים",
+      "email": "itaicain1@gmail.com",
+      "phonenumber": "058-4636908",
+      "highschool": "הימלפרב",
+      "classIndex": 2
+    },
+    {
+      "surname": "קירמאיר",
+      "name": "בנימין",
+      "address": "כפר עציון",
+      "email": "bskermaier@gmail.com",
+      "phonenumber": "058-6903614",
+      "highschool": "מקור חיים",
+      "classIndex": 2
+    },
+    {
+      "surname": "קלייטמן",
+      "name": "נווה",
+      "address": "ירוחם",
+      "email": "buuvek@gmail.com",
+      "phonenumber": "058-5050987",
+      "highschool": "בלבב שלם",
+      "classIndex": 2
+    },
+    {
+      "surname": "קליין",
+      "name": "אלחנן",
+      "address": "בית אל",
+      "email": "elhanank123@gmail.com",
+      "phonenumber": "058-4223562",
+      "highschool": "אור עתניאל",
+      "classIndex": 2
+    },
+    {
+      "surname": "קרוננגולד",
+      "name": "יהושע",
+      "address": "רחובות",
+      "email": "yehoshua@gmail.com",
+      "phonenumber": "053-4205415",
+      "highschool": "אורות הזורעים",
+      "classIndex": 2
+    },
+    {
+      "surname": "קרמר",
+      "name": "רפאל",
+      "address": "גבעת שמואל",
+      "email": "refaelkremer@gmail.com",
+      "phonenumber": "058-5328056",
+      "highschool": "נחלים",
+      "classIndex": 2
+    },
+    {
+      "surname": "רובינשטיין",
+      "name": "נעם יהודה",
+      "address": "אפרת",
+      "email": "noamr145@gmail.com",
+      "phonenumber": "0544206684",
+      "highschool": "נווה שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "רוזנצויג",
+      "name": "ישי",
+      "address": "קדומים",
+      "email": "ishay345@gmail.com",
+      "phonenumber": "054-6560849",
+      "highschool": "אורות הזורעים",
+      "classIndex": 2
+    },
+    {
+      "surname": "רחלין",
+      "name": "יעקב דוד",
+      "address": "ירושלים",
+      "email": "jacobrochlin@gmail.com",
+      "phonenumber": "058-4857069",
+      "classIndex": 2
+    },
+    {
+      "surname": "רטנר",
+      "name": "הלל",
+      "address": "כרמיאל",
+      "email": "hilelratner@gmail.com",
+      "phonenumber": "058-5502021",
+      "highschool": "אורט מעלות",
+      "classIndex": 2
+    },
+    {
+      "surname": "רסקין",
+      "name": "איתם",
+      "address": "ירושלים",
+      "email": "Eitam.ros1@gmail.com",
+      "phonenumber": "053-8242168",
+      "highschool": "המתמיד קרית שמונה",
+      "classIndex": 2
+    },
+    {
+      "surname": "שדיאור",
+      "name": "אריאל",
+      "address": "ירושלים",
+      "email": "arielzvi00@gmail.com",
+      "phonenumber": "054-3488386",
+      "highschool": "חורב",
+      "classIndex": 2
+    },
+    {
+      "surname": "שויבר",
+      "name": "אליעד",
+      "address": "אלון שבות",
+      "email": "eliads2000@gmail.com",
+      "phonenumber": "054-4307236",
+      "highschool": "דרך אבות",
+      "classIndex": 2
+    },
+    {
+      "surname": "שיינבך",
+      "name": "איתן",
+      "address": "אפרת",
+      "email": "sheinbach.e@gmail.com",
+      "phonenumber": "050-9903682",
+      "highschool": "דרך אבות",
+      "classIndex": 2
+    },
+    {
+      "surname": "שכטר",
+      "name": "איתן",
+      "address": "כפר עציון",
+      "email": "afyr22@gmail.com",
+      "phonenumber": "052-8380097",
+      "highschool": "נווה שמואל",
+      "classIndex": 2
+    },
+    {
+      "surname": "שמל",
+      "name": "מאיר שמחה",
+      "address": "אפרת",
+      "email": "marshmelo10@gmail.com",
+      "phonenumber": "058-7930969",
+      "highschool": "אורות יהודה",
+      "classIndex": 2
+    },
+    {
+      "surname": "שניידר",
+      "name": "שגב",
+      "address": "פתח תקווה",
+      "email": "shnider@012.net.il",
+      "phonenumber": "058-5739393",
+      "highschool": "נחלים",
+      "classIndex": 2
+    },
+    {
+      "surname": "אברג'ל",
+      "name": "גלעד שלמה",
+      "address": "גבעת שמואל",
+      "email": "giladabargel100@gmail.com",
+      "phonenumber": "054-9554821",
+      "highschool": "גבעת שמואל",
+      "classIndex": 3
+    },
+    {
+      "surname": "אהרוני",
+      "name": "ידידיה",
+      "address": "ירושלים",
+      "email": "yedidua1@gmail.com",
+      "phonenumber": "052-7732544",
+      "highschool": "נתיב מאיר",
+      "classIndex": 3
+    },
+    {
+      "surname": "אושן",
+      "name": "יונתן",
+      "address": "אפרת",
+      "email": "yonioshin98@aol.com",
+      "phonenumber": "055-6661838",
+      "highschool": "דרך אבות",
+      "classIndex": 3
+    },
+    {
+      "surname": "איתן",
+      "name": "יהודה",
+      "address": "מעון",
+      "email": "987yehuda789@gmail.com",
+      "phonenumber": "058-4828555",
+      "highschool": "בלבב שלם",
+      "classIndex": 3
+    },
+    {
+      "surname": "אליאסיאן",
+      "name": "תמיר",
+      "address": "נחושה",
+      "email": "tamirelyasian@gmail.com",
+      "phonenumber": "058-5812380",
+      "highschool": "אמית נחשון",
+      "classIndex": 3
+    },
+    {
+      "surname": "בן נון",
+      "name": "שחר",
+      "address": "אלון שבות",
+      "email": "shahar24@derech-avot.org.il",
+      "phonenumber": "058-4112122",
+      "highschool": "דרך אבות",
+      "classIndex": 3
+    },
+    {
+      "surname": "ברודר",
+      "name": "יונה",
+      "address": "אפרת",
+      "email": "yonabroder@gmail.com",
+      "phonenumber": "054-7861681",
+      "highschool": "אור תורה סטון",
+      "classIndex": 3
+    },
+    {
+      "surname": "ברכיה",
+      "name": "מאור",
+      "address": "עץ אפרים",
+      "email": "orma105@gmail.com",
+      "phonenumber": "054-3281535",
+      "highschool": "אלקנה",
+      "classIndex": 3
+    },
+    {
+      "surname": "ברנדריס",
+      "name": "נתאי",
+      "address": "רחובות",
+      "email": "nitay4000@gmail.com",
+      "phonenumber": "054-2575164",
+      "highschool": "ישיבת הדרום",
+      "classIndex": 3
+    },
+    {
+      "surname": "גוטמן",
+      "name": "אורי",
+      "address": "נחלים",
+      "email": "gutman443@gmail.com",
+      "phonenumber": "050-6280277",
+      "highschool": "נחלים",
+      "classIndex": 3
+    },
+    {
+      "surname": "גנזל",
+      "name": "אלישע",
+      "address": "רבבה",
+      "email": "elisha.ganzel@gmail.com",
+      "phonenumber": "058-7980852",
+      "highschool": "המתמיד",
+      "classIndex": 3
+    },
+    {
+      "surname": "גרינפלד",
+      "name": "מאיר יעקב",
+      "address": "נווה דניאל",
+      "email": "nheh1235@gmail.com",
+      "phonenumber": "054-2183117",
+      "highschool": "נווה שמואל",
+      "classIndex": 3
+    },
+    {
+      "surname": "דרורי",
+      "name": "דביר",
+      "address": "פסגות",
+      "email": "schrsrurh2@gmail.com",
+      "phonenumber": "058-6975966",
+      "highschool": "מודיעין",
+      "classIndex": 3
+    },
+    {
+      "surname": "הרוש",
+      "name": "רפאל משה",
+      "address": "רמות ירושלים",
+      "email": "refaelharush111@gmail.com",
+      "phonenumber": "0548442928",
+      "classIndex": 3
+    },
+    {
+      "surname": "וולף",
+      "name": "הדר",
+      "address": "אלון שבות",
+      "email": "hadarwolf17@gmail.com",
+      "phonenumber": "058-7909944",
+      "highschool": "דרך אבות",
+      "classIndex": 3
+    },
+    {
+      "surname": "ורקר",
+      "name": "גלעד",
+      "address": "שוהם",
+      "email": "giladver7@gmail.com",
+      "phonenumber": "054-3113849",
+      "highschool": "נחלים",
+      "classIndex": 3
+    },
+    {
+      "surname": "זולר",
+      "name": "בנימין (בנג'י)",
+      "email": "benjizoller@gmail.com",
+      "phonenumber": "0586622425",
+      "classIndex": 3
+    },
+    {
+      "surname": "זולר",
+      "name": "סמי (שמואל)",
+      "email": "sammy.zoller@gmail.com",
+      "phonenumber": "058-7580352",
+      "classIndex": 3
+    },
+    {
+      "surname": "זיק",
+      "name": "בארי",
+      "address": "גמזו",
+      "email": "beerizik213@gmail.com",
+      "phonenumber": "058-6902076",
+      "highschool": "נחלים",
+      "classIndex": 3
+    },
+    {
+      "surname": "יפה",
+      "name": "עדו",
+      "address": "רחובות",
+      "email": "japhaiddo@gmail.com",
+      "phonenumber": "054-9410116",
+      "highschool": "אמי\"ת עמיחי רחובות",
+      "classIndex": 3
+    },
+    {
+      "surname": "כ\"ץ",
+      "name": "אריאל",
+      "address": "גבעת שמואל",
+      "email": "kaduma@gmail.com",
+      "phonenumber": "058-5324444",
+      "highschool": "נחלים",
+      "classIndex": 3
+    },
+    {
+      "surname": "כהן",
+      "name": "שיר",
+      "address": "גמזו",
+      "email": "shircohen999@gmail.com",
+      "phonenumber": "052-8281538",
+      "highschool": "מקור חיים",
+      "classIndex": 3
+    },
+    {
+      "surname": "לביא",
+      "name": "עזריאל",
+      "address": "רעננה",
+      "email": "azlavi3@gmail.com",
+      "phonenumber": "0532273622",
+      "classIndex": 3
+    },
+    {
+      "surname": "לורנץ",
+      "name": "שחר",
+      "address": "כפר אדומים",
+      "email": "אין",
+      "phonenumber": "055-6665650",
+      "highschool": "נחלים",
+      "classIndex": 3
+    },
+    {
+      "surname": "ליאון",
+      "name": "יהודה",
+      "address": "גבעת שמואל",
+      "email": "yehudalion@gmail.com",
+      "phonenumber": "052-8082053",
+      "highschool": "נחלים",
+      "classIndex": 3
+    },
+    {
+      "surname": "מור יוסף",
+      "name": "יהב",
+      "address": "מודיעין מכבים רעות",
+      "email": "yahavmor12@gmail.com",
+      "phonenumber": "050-5806008",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 3
+    },
+    {
+      "surname": "משלוף",
+      "name": "אלישיב",
+      "address": "אלון מורה",
+      "email": "elyashivmf@gmail.com",
+      "phonenumber": "058-7745085",
+      "highschool": "אלון מורה",
+      "classIndex": 3
+    },
+    {
+      "surname": "נגן",
+      "name": "מיכאל",
+      "address": "עתניאל",
+      "email": "mechael9@gmail.com",
+      "phonenumber": "053-6228064",
+      "highschool": "מקור חיים",
+      "classIndex": 3
+    },
+    {
+      "surname": "ניר",
+      "name": "גדעון",
+      "address": "מורשת",
+      "email": "gidony2@gmail.com",
+      "phonenumber": "058-4525120",
+      "highschool": "תקוות יעקב",
+      "classIndex": 3
+    },
+    {
+      "surname": "סטבסקי",
+      "name": "רפאל",
+      "address": "נווה דניאל",
+      "email": "rastavsky@gmail.com",
+      "phonenumber": "052-6672101",
+      "highschool": "כינור דוד",
+      "classIndex": 3
+    },
+    {
+      "surname": "סידרנסקי",
+      "name": "יאיר",
+      "address": "רחובות",
+      "email": "kippi224@gmail.com",
+      "phonenumber": "052-2623969",
+      "highschool": "אמי\"ת עממי רחובות",
+      "classIndex": 3
+    },
+    {
+      "surname": "סיון",
+      "name": "עידו",
+      "address": "נתניה",
+      "email": "ido.sivan1@gmail.com",
+      "phonenumber": "052-4537142",
+      "highschool": "נתניה",
+      "classIndex": 3
+    },
+    {
+      "surname": "סמואל",
+      "name": "שמוליק",
+      "address": "אלון שבות",
+      "email": "samuel315206243@gmai.com",
+      "phonenumber": "058-4008053",
+      "highschool": "נווה שמואל",
+      "classIndex": 3
+    },
+    {
+      "surname": "ספיר",
+      "name": "יובל",
+      "address": "אלון שבות",
+      "email": "yuval.sapir5@gmail.com",
+      "phonenumber": "054-2899768",
+      "highschool": "הימלפרב",
+      "classIndex": 3
+    },
+    {
+      "surname": "ספרן",
+      "name": "אריה",
+      "address": "מודיעין",
+      "email": "aryehsaffern13@gmail.com",
+      "phonenumber": "058-4275600",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 3
+    },
+    {
+      "surname": "פייבלוביץ",
+      "name": "אבנר",
+      "address": "מורשת",
+      "email": "avner1209@walla.com",
+      "phonenumber": "050-3233456",
+      "highschool": "תמר בנתור בגולן",
+      "classIndex": 3
+    },
+    {
+      "surname": "קץ",
+      "name": "זק יצחק דוד",
+      "address": "ארה\"ב",
+      "email": "zachkatz2@yahoo.com",
+      "phonenumber": "058-6281606",
+      "classIndex": 3
+    },
+    {
+      "surname": "קרון",
+      "name": "אשר חיים",
+      "address": "אפרת",
+      "email": "krohnkrusher@gmail.com",
+      "phonenumber": "054-4897943",
+      "highschool": "אורות יהודה",
+      "classIndex": 3
+    },
+    {
+      "surname": "רבינוביץ'",
+      "name": "אושרי",
+      "address": "ד.נ. גוש עציון",
+      "email": "oshri341@gmail.com",
+      "phonenumber": "050-4077084",
+      "highschool": "מקור חיים",
+      "classIndex": 3
+    },
+    {
+      "surname": "שנוולד",
+      "name": "יהודה",
+      "address": "מודיעין",
+      "email": "yehudashenvald@gmail.com",
+      "phonenumber": "058-4317105",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 3
+    },
+    {
+      "surname": "שפיר",
+      "name": "ליאור",
+      "address": "שערי תקוה",
+      "email": "liorshafir123@gmail.com",
+      "phonenumber": "050-6841888",
+      "highschool": "ימ\"ה אלקנה",
+      "classIndex": 3
+    },
+    {
+      "surname": "שפסל",
+      "name": "ראובן",
+      "address": "חיפה",
+      "email": "rrttuuccii1@gmail.com",
+      "phonenumber": "058-5324232",
+      "highschool": "יבנה חיפה",
+      "classIndex": 3
+    },
+    {
+      "surname": "שרגא",
+      "name": "ליאור",
+      "address": "שלוחות",
+      "email": "liorsrhgh10@walla.com",
+      "phonenumber": "054-6746441",
+      "highschool": "שק\"ד - שדה אליהו",
+      "classIndex": 3
+    },
+    {
+      "surname": "שרון",
+      "name": "מאור",
+      "address": "גבעת שמואל",
+      "email": "maor10.sharon@gmail.com",
+      "phonenumber": "054-4501193",
+      "highschool": "גבעת שמואל",
+      "classIndex": 3
+    },
+    {
+      "surname": "תדהר",
+      "name": "שי",
+      "address": "ירושלים",
+      "email": "tidhar.shay@gmail.com",
+      "phonenumber": "058-6427129",
+      "highschool": "הימלפרב",
+      "classIndex": 3
+    },
+    {
+      "surname": "תמרי",
+      "name": "שמואל",
+      "address": "אלקנה",
+      "email": "shmuel03@gmail.com",
+      "phonenumber": "054-3017314",
+      "highschool": "אלקנה",
+      "classIndex": 3
+    },
+    {
+      "surname": "איתם",
+      "name": "יהונדב",
+      "address": "עתניאל",
+      "email": "yehonadavei@gmail.com",
+      "phonenumber": "054-5695240",
+      "classIndex": 4
+    },
+    {
+      "surname": "איתן",
+      "name": "אברהם",
+      "address": "מעון",
+      "email": "avrahamam@gmail.com",
+      "phonenumber": "052-7906856",
+      "classIndex": 4
+    },
+    {
+      "surname": "אסרף",
+      "name": "דביר",
+      "address": "אשדוד",
+      "email": "dvira596@gmail.com",
+      "phonenumber": "053-2263032",
+      "classIndex": 4
+    },
+    {
+      "surname": "בוסק",
+      "name": "עידו",
+      "address": "זכרון יעקב",
+      "email": "idob629@gmail.com",
+      "phonenumber": "058-6292342",
+      "classIndex": 4
+    },
+    {
+      "surname": "בן מיכאל",
+      "name": "יונה",
+      "address": "כפר תבור",
+      "email": "yonahbenmichael@gmail.com",
+      "phonenumber": "058-4891234",
+      "classIndex": 4
+    },
+    {
+      "surname": "ברג'ל",
+      "name": "מאור",
+      "address": "מעלה לבונה",
+      "email": "maor.bergel@gmail.com",
+      "phonenumber": "054-2018301",
+      "classIndex": 4
+    },
+    {
+      "surname": "גנזל",
+      "name": "גיא",
+      "address": "מזרח בנימין",
+      "email": "dhtd@gmail.com",
+      "phonenumber": "052-6169268",
+      "classIndex": 4
+    },
+    {
+      "surname": "גרבר",
+      "name": "רועי",
+      "address": "גבעת שמואל",
+      "email": "roigerberk@gmail.com",
+      "phonenumber": "052-6383966",
+      "classIndex": 4
+    },
+    {
+      "surname": "דודקביץ",
+      "name": "איתיאל",
+      "address": "חשמונאים",
+      "email": "etldud1234@gmail.com",
+      "phonenumber": "054-4297339",
+      "classIndex": 4
+    },
+    {
+      "surname": "הורדן",
+      "name": "יונתן דוד",
+      "address": "מודיעין",
+      "email": "yonatan.horden@gmail.com",
+      "phonenumber": "054-6560995",
+      "classIndex": 4
+    },
+    {
+      "surname": "הורוביץ",
+      "name": "יאיר",
+      "address": "רמת בית שמש",
+      "email": "Yair10033@gmail.com",
+      "phonenumber": "053-2829571",
+      "classIndex": 4
+    },
+    {
+      "surname": "וולמן",
+      "name": "הראל",
+      "address": "כפר סבא",
+      "email": "harelwu@walla.co.il",
+      "phonenumber": "052-8886718",
+      "classIndex": 4
+    },
+    {
+      "surname": "וקסלר",
+      "name": "אריאל",
+      "address": "מודיעין",
+      "email": "arielw54321@gmail.com",
+      "phonenumber": "054-5581490",
+      "classIndex": 4
+    },
+    {
+      "surname": "זיסרמן",
+      "name": "אוהד",
+      "address": "עינב",
+      "email": "ohad.zisserman@gmail.com",
+      "phonenumber": "054-9846753",
+      "classIndex": 4
+    },
+    {
+      "surname": "חבה",
+      "name": "יהונתן",
+      "address": "פתח תקוה",
+      "email": "yonatan.hba@gmail.com",
+      "phonenumber": "054-3456058",
+      "classIndex": 4
+    },
+    {
+      "surname": "חדד",
+      "name": "אהרן נחמן",
+      "address": "צפת",
+      "email": "roksaharon1@gmail.com",
+      "phonenumber": "052-7463888",
+      "classIndex": 4
+    },
+    {
+      "surname": "יעקובי",
+      "name": "דוד",
+      "address": "בית גמליאל",
+      "email": "davidy2072@gmail.com",
+      "phonenumber": "052-7972006",
+      "classIndex": 4
+    },
+    {
+      "surname": "יקותיאל",
+      "name": "עמיחי",
+      "address": "אלון שבות",
+      "email": "amihaiyku@gmail.com",
+      "phonenumber": "058-5584433",
+      "classIndex": 4
+    },
+    {
+      "surname": "לב",
+      "name": "תומר",
+      "address": "גבעת שמואל",
+      "email": "tomer.lev7@gmail.com",
+      "phonenumber": "052-7470742",
+      "classIndex": 4
+    },
+    {
+      "surname": "לב-ציון",
+      "name": "אריאל",
+      "address": "אלון שבות",
+      "email": "arielevtzi@gmail.com",
+      "phonenumber": "058-4454914",
+      "classIndex": 4
+    },
+    {
+      "surname": "לוי",
+      "name": "דוד",
+      "address": "אשחר",
+      "email": "davidlevi674@gmail.com",
+      "phonenumber": "054-7344032",
+      "classIndex": 4
+    },
+    {
+      "surname": "לוק",
+      "name": "דקל",
+      "address": "בית שמש",
+      "email": "dekellouk11@gmail.com",
+      "phonenumber": "052-7335232",
+      "classIndex": 4
+    },
+    {
+      "surname": "מוזס",
+      "name": "אלון",
+      "address": "מודיעין",
+      "email": "alonmozes10@gmail.com",
+      "phonenumber": "054-4405182",
+      "classIndex": 4
+    },
+    {
+      "surname": "מור מסינגר",
+      "name": "נעם אליהו",
+      "address": "בני ברק",
+      "email": "nomomsi@gmail.com",
+      "phonenumber": "052-5179494",
+      "classIndex": 4
+    },
+    {
+      "surname": "נוימן",
+      "name": "אורי",
+      "address": "מצפה יריחו",
+      "email": "orinoy97@gmail.com",
+      "phonenumber": "052-7203491",
+      "classIndex": 4
+    },
+    {
+      "surname": "נוסבוים",
+      "name": "שקד",
+      "address": "בני דרום",
+      "email": "shaked1998@gmail.com",
+      "phonenumber": "050-2183940",
+      "classIndex": 4
+    },
+    {
+      "surname": "ניומן",
+      "name": "אלישיב",
+      "address": "עינב",
+      "phonenumber": "054-6688243",
+      "classIndex": 4
+    },
+    {
+      "surname": "סופר",
+      "name": "עילי",
+      "address": "נופי פרת",
+      "email": "ilaysoffer@gmail.com",
+      "phonenumber": "054-5901376",
+      "classIndex": 4
+    },
+    {
+      "surname": "פין",
+      "name": "איל",
+      "address": "קיסריה",
+      "email": "ayalfinn88@gmail.com",
+      "phonenumber": "054-7402035",
+      "classIndex": 4
+    },
+    {
+      "surname": "פלברמן",
+      "name": "יחזקאל",
+      "address": "נוף איילון",
+      "email": "hezefel.9@gmail.com",
+      "phonenumber": "058-4199802",
+      "classIndex": 4
+    },
+    {
+      "surname": "פלנר",
+      "name": "הראל",
+      "address": "בית שמש",
+      "email": "harelfelner8@gmail.com",
+      "phonenumber": "058-6662256",
+      "classIndex": 4
+    },
+    {
+      "surname": "פריי",
+      "name": "יעקב זאב",
+      "address": "בית שמש",
+      "email": "yaakovzeev@gmail.com",
+      "phonenumber": "055-6600613",
+      "classIndex": 4
+    },
+    {
+      "surname": "צדוק",
+      "name": "אריאל",
+      "address": "רמת גן",
+      "email": "ariel-zadok@hotmail.com",
+      "phonenumber": "054-7655759",
+      "classIndex": 4
+    },
+    {
+      "surname": "ציגלר",
+      "name": "ישראל",
+      "address": "אלון שבות",
+      "email": "yisraelziegler@gmail.com",
+      "phonenumber": "052-6702137",
+      "classIndex": 4
+    },
+    {
+      "surname": "קוטנר",
+      "name": "שחר",
+      "address": "גבעתיים",
+      "email": "kutner98@gmail.com",
+      "phonenumber": "052-6748467",
+      "classIndex": 4
+    },
+    {
+      "surname": "קופלנד",
+      "name": "ידעיה",
+      "address": "עתניאל",
+      "email": "yedaaya@gmail.com",
+      "phonenumber": "053-8254899",
+      "classIndex": 4
+    },
+    {
+      "surname": "קופרשמיד",
+      "name": "יהודה",
+      "address": "נוף איילון",
+      "email": "yeuda.k372@gmail.com",
+      "phonenumber": "053-4209148",
+      "classIndex": 4
+    },
+    {
+      "surname": "קורן",
+      "name": "עידו",
+      "address": "ירושלים",
+      "email": "Nerok1998@gmail.com",
+      "phonenumber": "050-3562655",
+      "classIndex": 4
+    },
+    {
+      "surname": "קיציס",
+      "name": "אוריאל",
+      "address": "נתניה",
+      "email": "urikiz63@gmail.com",
+      "phonenumber": "054-7314417",
+      "classIndex": 4
+    },
+    {
+      "surname": "קלימן",
+      "name": "אורי",
+      "address": "ד.נ. מנשה",
+      "email": "orikliman93@gmail.com",
+      "phonenumber": "058-6350123",
+      "classIndex": 4
+    },
+    {
+      "surname": "רוזנבלט",
+      "name": "יואב",
+      "address": "אפרת",
+      "email": "yoavloros@gmail.com",
+      "phonenumber": "052-8119995",
+      "classIndex": 4
+    },
+    {
+      "surname": "שיף",
+      "name": "שמשון",
+      "email": "samsonschiff97@gmail.com",
+      "phonenumber": "058-7920456",
+      "classIndex": 4
+    },
+    {
+      "surname": "שלומוביץ",
+      "name": "עדיאל",
+      "address": "נוף איילון",
+      "email": "adielshlo@gmail.com",
+      "phonenumber": "055-6629920",
+      "classIndex": 4
+    },
+    {
+      "surname": "אורן",
+      "name": "אביעד",
+      "address": "הושעיה",
+      "phonenumber": "054-5490383",
+      "highschool": "שדה יעקב",
+      "classIndex": 5
+    },
+    {
+      "surname": "אילון",
+      "name": "עדו",
+      "address": "אפרת",
+      "email": "hidoeilon@gmail.com",
+      "phonenumber": "054-8303120",
+      "highschool": "נווה שמואל",
+      "classIndex": 5
+    },
+    {
+      "surname": "אלבוים",
+      "name": "מתן",
+      "address": "גבעת שמואל",
+      "email": "elbomatane@gmail.com",
+      "phonenumber": "052-5776105",
+      "highschool": "גבעת שמואל",
+      "classIndex": 5
+    },
+    {
+      "surname": "אמסל",
+      "name": "אילן",
+      "address": "ירושלים",
+      "email": "ilanamsel07@gmail.com",
+      "phonenumber": "054-3283058",
+      "highschool": "מכון לב",
+      "classIndex": 5
+    },
+    {
+      "surname": "בן יאיר",
+      "name": "נעם",
+      "address": "מיתר",
+      "email": "noamby67@gmail.com",
+      "phonenumber": "052-3720782",
+      "highschool": "בלבב שלם",
+      "classIndex": 5
+    },
+    {
+      "surname": "בנדון",
+      "name": "ישי יאיר",
+      "address": "מעלה אדומים",
+      "email": "ishai.bendon@gmail.com",
+      "phonenumber": "054-6744726",
+      "highschool": "נתיב מאיר",
+      "classIndex": 5
+    },
+    {
+      "surname": "בקלור",
+      "name": "יאיר",
+      "address": "ירושלים",
+      "email": "ybbaklor@gmail.com",
+      "phonenumber": "054-9414835",
+      "highschool": "הרטמן",
+      "classIndex": 5
+    },
+    {
+      "surname": "ברנשטיין",
+      "name": "אריאל",
+      "address": "גבעת שמואל",
+      "email": "arbr532@gmail.com",
+      "phonenumber": "052-6089057",
+      "highschool": "רמת גן",
+      "classIndex": 5
+    },
+    {
+      "surname": "גבירצמן",
+      "name": "יואב",
+      "address": "אפרת",
+      "email": "yoavy19@gmail.com",
+      "phonenumber": "052-8666537",
+      "highschool": "נווה שמואל",
+      "classIndex": 5
+    },
+    {
+      "surname": "גוטסמן",
+      "name": "אהרון בן ציון",
+      "address": "בית שמש",
+      "email": "bentzi57@gmail.com",
+      "phonenumber": "058-5703231",
+      "classIndex": 5
+    },
+    {
+      "surname": "גולדשמידט",
+      "name": "יוסף",
+      "address": "פסגת זאב",
+      "email": "yog666@walla.com;goldenjo66@gmail.com;goldenjo66@gmail.com",
+      "phonenumber": "054-3450922",
+      "highschool": "שפע",
+      "classIndex": 5
+    },
+    {
+      "surname": "גייגר",
+      "name": "משה",
+      "address": "ירושלים",
+      "email": "nav320@gmail.com",
+      "phonenumber": "058-6333345",
+      "highschool": "נתיב מאיר",
+      "classIndex": 5
+    },
+    {
+      "surname": "גרוס",
+      "name": "חיים אליהו",
+      "address": "ירושלים",
+      "email": "chaimgross7@gmail.com",
+      "phonenumber": "050-3464543",
+      "highschool": "נתיב מאיר",
+      "classIndex": 5
+    },
+    {
+      "surname": "דאבנר",
+      "name": "יואל",
+      "address": "עתניאל",
+      "email": "y.dobner@gmail.com",
+      "phonenumber": "052-3828801",
+      "highschool": "ישל\"צ",
+      "classIndex": 5
+    },
+    {
+      "surname": "דרורי",
+      "name": "חנן",
+      "address": "פסגות",
+      "email": "hanandrori@gmail.com",
+      "phonenumber": "052-7829062",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 5
+    },
+    {
+      "surname": "דרורי",
+      "name": "שלמה",
+      "address": "צפת",
+      "email": "shlomo@drori.org",
+      "phonenumber": "058-7799062",
+      "highschool": "אמי\"ת צפת",
+      "classIndex": 5
+    },
+    {
+      "surname": "דרמון",
+      "name": "דניאל",
+      "address": "ירושלים",
+      "email": "daniels.darmon@gmail.com",
+      "phonenumber": "055-6619199",
+      "highschool": "נתיבות יוסף",
+      "classIndex": 5
+    },
+    {
+      "surname": "הולצמן",
+      "name": "אריאל",
+      "address": "מעלה גלבוע",
+      "email": "ariel.hol540@gmail.com",
+      "phonenumber": "058-4992226",
+      "highschool": "אורות הזורעים",
+      "classIndex": 5
+    },
+    {
+      "surname": "הורביץ",
+      "name": "עידן",
+      "address": "עתניאל",
+      "phonenumber": "058-5459524",
+      "highschool": "אור עתניאל",
+      "classIndex": 5
+    },
+    {
+      "surname": "הורוביץ",
+      "name": "עמיחי",
+      "address": "ירושלים",
+      "phonenumber": "054-5693881",
+      "highschool": "חורב",
+      "classIndex": 5
+    },
+    {
+      "surname": "הימן",
+      "name": "שמואל",
+      "address": "חספין",
+      "email": "shmulik158@gmail.com",
+      "phonenumber": "054-4961223",
+      "highschool": "חספין",
+      "classIndex": 5
+    },
+    {
+      "surname": "הירש",
+      "name": "מאיר (מיכאל)",
+      "address": "אשקלון",
+      "email": "meirhirsch11@gmail.com",
+      "phonenumber": "052-5412437",
+      "highschool": "בר אילן",
+      "classIndex": 5
+    },
+    {
+      "surname": "הירשפלד",
+      "name": "עמיאל",
+      "address": "עתניאל",
+      "email": "gnhtkvhrapks@gmail.com",
+      "phonenumber": "055-6626389",
+      "highschool": "ישל\"צ",
+      "classIndex": 5
+    },
+    {
+      "surname": "וולפסון",
+      "name": "איתן",
+      "address": "בית שמש",
+      "email": "eewolfson@yahoo.com;eitanwolfson@gmail.com;eitanwolfson@gmail.com",
+      "phonenumber": "054-7238444",
+      "highschool": "חורב",
+      "classIndex": 5
+    },
+    {
+      "surname": "ויסברג",
+      "name": "חיים",
+      "address": "אפרת",
+      "email": "weisberg.chaim@gmail.com",
+      "phonenumber": "054-7434253",
+      "highschool": "אורות יהודה",
+      "classIndex": 5
+    },
+    {
+      "surname": "חיון",
+      "name": "יניב",
+      "address": "נהריה",
+      "email": "yanivoslzy2@walla.com",
+      "phonenumber": "054-2508346",
+      "highschool": "אמית קנדי עכו",
+      "classIndex": 5
+    },
+    {
+      "surname": "יגר",
+      "name": "טוביה",
+      "address": "ירושלים",
+      "email": "tuviayeger2@gmail.com",
+      "phonenumber": "0542575637",
+      "highschool": "ישל\"צ",
+      "classIndex": 5
+    },
+    {
+      "surname": "לוסטמן",
+      "name": "עדיאל",
+      "address": "בית שמש",
+      "email": "adielllusman@gmail.com;adielllustman@gmail.com",
+      "phonenumber": "050-4388567",
+      "highschool": "חורב",
+      "classIndex": 5
+    },
+    {
+      "surname": "מרון",
+      "name": "אברהם משה",
+      "address": "ירושלים",
+      "email": "amimaron@gmail.com",
+      "phonenumber": "054-6613615",
+      "highschool": "חורב",
+      "classIndex": 5
+    },
+    {
+      "surname": "מריוט",
+      "name": "ראובן",
+      "address": "עתניאל",
+      "email": "marriottruby@gmail.com",
+      "phonenumber": "058-5717319",
+      "classIndex": 5
+    },
+    {
+      "surname": "משלוף",
+      "name": "יהודה",
+      "address": "אלון מורה",
+      "email": "meschloff@gmail.com",
+      "phonenumber": "052-9400660",
+      "highschool": "אלון מורה",
+      "classIndex": 5
+    },
+    {
+      "surname": "נאמן",
+      "name": "ישי",
+      "address": "מגדל עוז",
+      "email": "yishain2@gmail.com",
+      "phonenumber": "052-8119148",
+      "highschool": "נווה שמואל",
+      "classIndex": 5
+    },
+    {
+      "surname": "נהרי",
+      "name": "יאיר",
+      "address": "פתח תקווה",
+      "email": "yair.nahari42@gmail.com;Yair.nahari42@gmail.com",
+      "phonenumber": "054-8039459",
+      "highschool": "רמת גן",
+      "classIndex": 5
+    },
+    {
+      "surname": "פולק",
+      "name": "ליאור",
+      "address": "הושעיה",
+      "email": "liorpollak122@gmail.com",
+      "phonenumber": "052-2917577",
+      "highschool": "תקוות יעקב",
+      "classIndex": 5
+    },
+    {
+      "surname": "פייגלין",
+      "name": "אריאל",
+      "address": "נהריה",
+      "phonenumber": "054-2864257",
+      "highschool": "אורות הזורעים",
+      "classIndex": 5
+    },
+    {
+      "surname": "פירר",
+      "name": "אסף",
+      "address": "מודיעין",
+      "email": "asaf97531@walla.com",
+      "phonenumber": "054-6102901",
+      "highschool": "לפיד מודיעין",
+      "classIndex": 5
+    },
+    {
+      "surname": "פלבר",
+      "name": "ישי",
+      "address": "ירושלים",
+      "email": "yishayf97@gmail.com",
+      "phonenumber": "058-6563536",
+      "highschool": "חורב",
+      "classIndex": 5
+    },
+    {
+      "surname": "פלורנטל",
+      "name": "שמואל נחמן",
+      "address": "קדומים",
+      "email": "sflorenthal@gmail.com",
+      "phonenumber": "054-2433777",
+      "highschool": "מכון לב",
+      "classIndex": 5
+    },
+    {
+      "surname": "צוראל",
+      "name": "אברהם",
+      "address": "ירושלים",
+      "phonenumber": "058-5610055",
+      "highschool": "חורב",
+      "classIndex": 5
+    },
+    {
+      "surname": "קלין",
+      "name": "יהונתן נריה",
+      "address": "מעלה מכמש",
+      "email": "yehonatanklin@gmail.com",
+      "phonenumber": "052-7253338",
+      "highschool": "אור עתניאל",
+      "classIndex": 5
+    },
+    {
+      "surname": "רוזנברג",
+      "name": "דניאל יצחק",
+      "address": "ירושלים",
+      "email": "dandush57@gmail.com",
+      "phonenumber": "052-8426565",
+      "highschool": "מקור חיים",
+      "classIndex": 5
+    },
+    {
+      "surname": "שטיינר",
+      "name": "שחר",
+      "address": "חיפה",
+      "email": "steinershahar@gmail.com",
+      "phonenumber": "054-5308118",
+      "highschool": "חיספין",
+      "classIndex": 5
+    },
+    {
+      "surname": "שינפלד",
+      "name": "אביהו",
+      "address": "גבעת שמואל",
+      "email": "Avihushin@gmail.com",
+      "phonenumber": "050-4234311",
+      "highschool": "בר אילן לאומנויות ומדעים ת\"א",
+      "classIndex": 5
+    },
+    {
+      "surname": "שפירא",
+      "name": "תומר",
+      "address": "טירת יהודה",
+      "email": "tomers97@gmail.com",
+      "phonenumber": "054-3044276",
+      "highschool": "גבעת שמואל",
+      "classIndex": 5
+    },
+    {
+      "surname": "אזולאי",
+      "name": "ניר",
+      "address": "רחמילביץ",
+      "email": "nirazoulay@gmail.com",
+      "phonenumber": "050-5717304",
+      "classIndex": 6
+    },
+    {
+      "surname": "ברלין",
+      "name": "אהוד",
+      "address": "עולי הגרדום",
+      "email": "ehud305@gmail.com",
+      "phonenumber": "050-4006138",
+      "classIndex": 6
+    },
+    {
+      "surname": "גולדשמידט",
+      "name": "מלאכי",
+      "email": "chebzi@gmail.com",
+      "phonenumber": "052-8119559",
+      "classIndex": 6
+    },
+    {
+      "surname": "דמרי",
+      "name": "מעוז",
+      "address": "עתניאל",
+      "email": "maoz1840@gmail.com",
+      "phonenumber": "054-7695452",
+      "classIndex": 6
+    },
+    {
+      "surname": "הכהן",
+      "name": "אריאל",
+      "address": "קרית ספר",
+      "email": "aahacohen@gmail.com",
+      "phonenumber": "0522902540",
+      "classIndex": 6
+    },
+    {
+      "surname": "חרמון",
+      "name": "שמואל חיים",
+      "address": "עתניאל",
+      "email": "shmuelh10@gmail.com",
+      "phonenumber": "053-8270702",
+      "classIndex": 6
+    },
+    {
+      "surname": "טאוב",
+      "name": "בועז",
+      "email": "boaztaub@gmail.com",
+      "phonenumber": "055-6668367",
+      "classIndex": 6
+    },
+    {
+      "surname": "ליסטנברג",
+      "name": "עידו",
+      "address": "קדם",
+      "email": "idolist1@gmail.com",
+      "phonenumber": "054-3199131",
+      "classIndex": 6
+    },
+    {
+      "surname": "לסקר",
+      "name": "איתי",
+      "address": "הר כנען",
+      "email": "itaylasker6@gmail.com",
+      "phonenumber": "054-7228892",
+      "classIndex": 6
+    },
+    {
+      "surname": "פאס",
+      "name": "דוד שלמה",
+      "address": "נחל תמנע",
+      "email": "david.poss@gmail.com",
+      "phonenumber": "054-7466350",
+      "classIndex": 6
+    },
+    {
+      "surname": "פיטוסי",
+      "name": "דביר",
+      "address": "מורשת",
+      "email": "Dvirfit@gmail.com",
+      "phonenumber": "054-7675588",
+      "classIndex": 6
+    },
+    {
+      "surname": "רותם",
+      "name": "דביר",
+      "email": "dvirotem11@gmail.com",
+      "phonenumber": "052-9536423",
+      "classIndex": 6
+    },
+    {
+      "surname": "רכטמן",
+      "name": "דניאל",
+      "address": "נחום",
+      "email": "daniel763@gmail.com",
+      "phonenumber": "052-5403226",
+      "classIndex": 6
+    },
+    {
+      "surname": "שוקרון",
+      "name": "גבריאל",
+      "address": "מצפה נבו",
+      "email": "gabichou@walla.com",
+      "phonenumber": "054-2023239",
+      "classIndex": 6
+    },
+    {
+      "surname": "ששון",
+      "name": "מיכאל",
+      "address": "עולי הגרדום",
+      "email": "michaelsasson21@gmail.com",
+      "phonenumber": "052-5119266",
+      "classIndex": 6
+    },
+    {
+      "surname": "לוי",
+      "name": "אלון",
+      "phonenumber": "050-9703994",
+      "classIndex": 6,
+      "email": "alonl5755@gmail.com"
+    },
+    {
+      "surname": "פישמן",
+      "name": "נתנאל",
+      "phonenumber": "050-7338247",
+      "classIndex": 6,
+      "email": "nelyfish@gmail.com"
+    },
+    {
+      "surname": "נגן",
+      "name": "הלל",
+      "phonenumber": "052-6228064",
+      "classIndex": 6,
+      "email": "hilelnagen@gmail.com"
+    },
+    {
+      "surname": "פרייס",
+      "name": "אביעד",
+      "phonenumber": "054-5463703",
+      "classIndex": 6,
+      "email": "aviad1330@gmail.com"
+    },
+    {
+      "surname": "שוהם",
+      "name": "נחל אל גד",
+      "phonenumber": "058-7110010",
+      "classIndex": 6,
+      "email": "elgad.shoham@gmail.com"
+    },
+    {
+      "surname": "בן יוסף",
+      "name": "עומר",
+      "phonenumber": "052-4507297",
+      "classIndex": 6,
+      "email": "omer_by212@walla.com"
+    },
+    {
+      "surname": "גולן",
+      "name": "אביחי",
+      "phonenumber": "053-3017948",
+      "classIndex": 6,
+      "email": "avvichay@walla.com"
+    },
+    {
+      "surname": "קץ",
+      "name": "יהודה",
+      "phonenumber": "058-605-0207",
+      "classIndex": 6
+    },
+    {
+      "surname": "אבריק",
+      "name": "יהודה",
+      "phonenumber": "050-356-6681",
+      "classIndex": 6
+    },
+    {
+      "surname": "הכהן",
+      "name": "ראם",
+      "phonenumber": "052-5665210",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "קלמנזון",
+      "name": "בני",
+      "phonenumber": "052-5665211",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "שרלו",
+      "name": "אלחנן",
+      "phonenumber": "052-2853569",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "מנצור",
+      "name": "נריה",
+      "phonenumber": "054-4551332",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "הכהן",
+      "name": "אורי",
+      "phonenumber": "052-5665312",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "קאהן",
+      "name": "מתיתיהו",
+      "phonenumber": "052-4326194",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "שטרנברג",
+      "name": "מתניה",
+      "phonenumber": "052-3654998",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "שכטר",
+      "name": "ישי",
+      "phonenumber": "052-5665749",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "דוקוב",
+      "name": "אמנון",
+      "phonenumber": "050-3225203",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "נגן",
+      "name": "יעקב",
+      "phonenumber": "052-5959045",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "אלפיה",
+      "name": "איל",
+      "phonenumber": "052-5024955",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "נגר",
+      "name": "פדיה",
+      "phonenumber": "058-7555539",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "בוקובזה",
+      "name": "תומר",
+      "phonenumber": "054-6644809",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "לוגסי",
+      "name": "אסף",
+      "phonenumber": "050-2708732",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "טייץ",
+      "name": "נריה",
+      "phonenumber": "052-3121500",
+      "classIndex": 7,
+      "rabbi": true
+    },
+    {
+      "surname": "",
+      "name": "מוקד 4",
+      "phonenumber": "1208",
+      "classIndex": 7
+    },
+    {
+      "surname": "",
+      "name": "מזכירות ישיבת עתניאל",
+      "phonenumber": "02-5665215",
+      "classIndex": 7
+    }
+  ]
+}

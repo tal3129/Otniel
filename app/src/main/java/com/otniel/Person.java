@@ -377,6 +377,10 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
                 '}';
     }
 
+    public String getClassIndexString() {
+        return ClassIndex.values()[classIndex-1].toString();
+    }
+
     public enum PersonColor {
         YELLOW,
         NONE
