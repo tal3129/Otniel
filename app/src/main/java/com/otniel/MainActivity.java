@@ -389,7 +389,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int count = 0;
 
-        String tag = stamp.equals("") ? "" : "(" + stamp + ")";
+        stamp = stamp.equals("") ? "" : "(" + stamp + ")";
 
         ArrayList<Person> peopleToAdd = new ArrayList<>(currentPeople);
 
