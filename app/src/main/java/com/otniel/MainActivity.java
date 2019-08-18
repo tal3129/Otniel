@@ -1,18 +1,15 @@
-package com.otniel.Activities;
+package com.otniel;
 
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.SearchManager;
-import android.content.ContentProviderOperation;
-import android.content.ContentProviderResult;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +26,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,12 +47,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
-import com.otniel.AskForPermissions;
-import com.otniel.PeopleAdapter;
-import com.otniel.Person;
-import com.otniel.R;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,6 +55,9 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    final static int EVERYONE = 8;
+    final static int C = 8;
+    final static String NO_IMG_ERROR_MSG = "Object does not exist at location.";
 
     public static boolean call = true;
     public static HashMap<Integer, String> lookupKeys = new HashMap<>();
@@ -74,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ArrayList<Person> devicePeople = new ArrayList<>();
 
     private int spVersion = -1, fbVersion = -1;
+
+    public static String getQuery() {
+        return query;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,11 +100,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getPeopleFromFB();
     }
 
-
     // Goes through the current people, downloads images of people
     private void downloadLeftImages() {
         for (Person person : people)
-            if (person.imageState != 1)
+            if (person.imageState == ImageState.NEED_TO_DOWNLOAD)
                 downloadImage(person, false);
     }
 
@@ -138,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 people.clear();
                 people.addAll(databasePeople);
                 downloadLeftImages();
-                changeIndex(8);
+                changeIndex(EVERYONE);
             }
 
             @Override
@@ -160,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         people = devicePeople;
         currentPeople.addAll(people);
-        changeIndex(8);
+        changeIndex(EVERYONE);
     }
 
     // when the download was finished, update the people on the device.
@@ -173,25 +172,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStop();
     }
 
-
     // Download the image of this person
     private void downloadImage(Person person, boolean useBig) {
         String suffix = useBig ? "JPG" : "jpg";
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference(person.getPhonenumber().replace("-", "") + "." + suffix);
+        String prefix = person.getPhonenumberFromatted();
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference( prefix+ "." + suffix);
         File localFile = null;
         try {
-            localFile = File.createTempFile(person.getPhonenumber().replace("-", ""), suffix);
+            Log.d("TAGGGGGGG", person.toString());
+            localFile = File.createTempFile(prefix, suffix);
         } catch (IOException ignored) {
         }
         if (localFile != null) {
             person.setPicPath(localFile.getPath());
             storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-                person.imageState = 1;
+                person.imageState = ImageState.COMPLETE;
             }).addOnFailureListener(exception -> {
                 if (!useBig)
                     downloadImage(person, true);
-                else
-                    person.imageState = -1; // If the image could not be loaded
+                else {
+                    Log.d("MyErrorTaggy", exception.getMessage());
+                    if(exception.getMessage().equals(NO_IMG_ERROR_MSG))
+                        person.imageState = ImageState.NO_IMG;
+                    else
+                        person.imageState = ImageState.NEED_TO_DOWNLOAD; // If the image could not be loaded
+                }
             });
         }
     }
@@ -209,18 +214,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void updatePeopleList() {
-
         currentPeople.clear();
 
         for (Person person : people) {
-            if ((currentIndex == 8 && person.getClassIndex() < 8) || currentIndex == person.getClassIndex() ||
-                    (currentIndex == 14 && person.getClassIndex() < 14 && person.getClassIndex() > 8)) {
+            if (currentIndex == EVERYONE || currentIndex == person.getClassIndex()) {
                 if (query.equals("") || person.getName().contains(query) || person.getPhonenumber().replace("-", "").contains(query)) {
                     currentPeople.add(person);
                 }
             }
         }
-
     }
 
     private void updateList() {
@@ -287,7 +289,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dialog.show();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -306,9 +307,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             openSortByAlertView();
         } else if (id == R.id.action_addAll) {
             if (AskForPermissions.checkPermission(this, AskForPermissions.contacts)) {
-
                 showAddAllDialog();
-
             } else {
                 MainActivity.call = true;
                 AskForPermissions.requestPermission(this, AskForPermissions.contacts, AskForPermissions.contactsIndx);
@@ -403,7 +402,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             boolean exist = contactExists(this, person.getPhonenumber().replace("-", ""));
             if (!exist)
-                addContact(person, tag);
+                person.addContactAuto(stamp);
         }
 
         mBuilder.setProgress(currentPeople.size(), currentPeople.size(), false)
@@ -412,44 +411,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mNotifyManager.notify(0, mBuilder.build());
     }
 
-    private void addContact(Person person, String stamp) {
-        ArrayList<ContentProviderOperation> operationList = new ArrayList<>();
-        operationList.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
-                .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
-                .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
-                .build());
-
-        operationList.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, person.getNameAlwaysFromName() + " " + stamp)
-                .build());
-
-        if (person.getImage() != null) {
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            person.getImage().compress(Bitmap.CompressFormat.PNG, 100, stream);
-            byte[] byteArray = stream.toByteArray();
-
-            operationList.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
-                    .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO, byteArray)
-                    .build());
-        }
-
-        operationList.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, person.getPhonenumber())
-                .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
-                .build());
-
-        try {
-            ContentProviderResult[] results = getContentResolver().applyBatch(ContactsContract.AUTHORITY, operationList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     private boolean contactExists(Context context, String number) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -495,7 +456,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_g) {
             changeIndex(7);
         } else if (id == R.id.nav_h) {
-            changeIndex(8);
+            changeIndex(EVERYONE);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -565,8 +526,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public static String getQuery() {
-        return query;
+    public Person findPersonByNumber(ArrayList<Person> persons, String phone) {
+        for (Person p : persons) {
+            if (p.getPhonenumber().equals(phone))
+                return p;
+        }
+        return null;
     }
 
     class AppData {
@@ -577,13 +542,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.people = devicePeople;
             this.version = version;
         }
-    }
-
-    public Person findPersonByNumber(ArrayList<Person> persons, String phone) {
-        for (Person p : persons) {
-            if (p.getPhonenumber().equals(phone))
-                return p;
-        }
-        return null;
     }
 }

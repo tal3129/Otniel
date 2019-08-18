@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-    <com.otniel.CircleImageView
+    <ImageView
         android:id="@+id/person_img"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -46,15 +46,6 @@
             android:layout_height="wrap_content"
             android:text="054-5952047"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-        <TextView
-            android:id="@+id/person_job"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ראש הישיבה"
-            android:textColor="@color/colorJob"
-            android:visibility="gone"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </LinearLayout>
     </LinearLayout>
     <ImageView
@@ -63,6 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
         android:onClick="showPopup"
         android:src="@mipmap/ic_action_more_vert" />
 </LinearLayout>

@@ -59,10 +59,7 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
 
         try {
             if (firstDraw) {
-
-
                 Drawable drawable = getDrawable();
-
                 if (drawable == null) {
                     return;
                 }
@@ -71,10 +68,10 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
                     return;
                 }
 
-                Bitmap b = null;
+                Bitmap b;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
                         && drawable instanceof VectorDrawable) {
-                    ((VectorDrawable) drawable).draw(canvas);
+                    drawable.draw(canvas);
                     b = Bitmap.createBitmap(canvas.getWidth(), canvas.getHeight(), Bitmap.Config.ARGB_8888);
                     Canvas c = new Canvas();
                     c.setBitmap(b);
@@ -85,7 +82,7 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
 
                 Bitmap bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
 
-                int w = getWidth(), h = getHeight();
+                int w = getWidth();
 
                 Bitmap roundBitmap = getCroppedBitmap(bitmap, w);
                 setImageBitmap(roundBitmap);
@@ -95,7 +92,6 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
         }catch (Exception e){
             crash = true;
         }
-        //canvas.drawBitmap(roundBitmap, 0, 0, null);
 
         super.onDraw(canvas);
     }
@@ -110,7 +106,6 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
                 sbmp.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
 
-        final int color = 0xffa19774;
         final Paint paint = new Paint();
         final Rect rect = new Rect(0, 0, sbmp.getWidth(), sbmp.getHeight());
 
@@ -125,61 +120,6 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(sbmp, rect, rect, paint);
 
-
         return output;
     }
-
-        /*@Override
-        protected void onDraw(Canvas canvas) {
-
-            Drawable drawable = getDrawable();
-
-            if (drawable == null) {
-                return;
-            }
-
-            if (getWidth() == 0 || getHeight() == 0) {
-                return;
-            }
-            Bitmap b = ((BitmapDrawable) drawable).getBitmap();
-            Bitmap bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
-
-            int w = getWidth(), h = getHeight();
-
-            Bitmap roundBitmap = getCroppedBitmap(bitmap,100);
-            canvas.drawBitmap(roundBitmap, 0, 0, null);
-
-        }
-
-        public static Bitmap getCroppedBitmap(Bitmap bmp, int radius) {
-            Bitmap sbmp;
-
-            if (bmp.getWidth() != radius || bmp.getHeight() != radius) {
-                float smallest = Math.min(bmp.getWidth(), bmp.getHeight());
-                float factor = smallest / radius;
-                sbmp = Bitmap.createScaledBitmap(bmp, (int)(bmp.getWidth() / factor), (int)(bmp.getHeight() / factor), false);
-            } else {
-                sbmp = bmp;
-            }
-
-            Bitmap output = Bitmap.createBitmap(radius, radius,
-                    Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(output);
-
-            final int color = 0xffa19774;
-            final Paint paint = new Paint();
-            final Rect rect = new Rect(0, 0, radius, radius);
-
-            paint.setAntiAlias(true);
-            paint.setFilterBitmap(true);
-            paint.setDither(true);
-            canvas.drawARGB(0, 0, 0, 0);
-            paint.setColor(Color.parseColor("#BAB399"));
-            canvas.drawCircle(radius / 2 + 0.7f,
-                    radius / 2 + 0.7f, radius / 2 + 0.1f, paint);
-            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-            canvas.drawBitmap(sbmp, rect, rect, paint);
-
-            return output;
-        }*/
 }
