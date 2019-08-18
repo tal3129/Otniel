@@ -7,6 +7,11 @@
     android:layoutDirection="rtl"
     android:weightSum="7"
     android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/details_layout"
+        android:layout_weight="6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     <com.otniel.CircleImageView
         android:id="@+id/person_img"
@@ -51,7 +56,7 @@
             android:visibility="gone"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </LinearLayout>
-
+    </LinearLayout>
     <ImageView
         android:id="@+id/person_menu"
         android:layout_width="0dp"
