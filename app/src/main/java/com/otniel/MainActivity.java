@@ -26,7 +26,6 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,7 +55,6 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     final static int EVERYONE = 8;
-    final static int C = 8;
     final static String NO_IMG_ERROR_MSG = "Object does not exist at location.";
 
     public static boolean call = true;
@@ -172,32 +170,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStop();
     }
 
-    // Download the image of this person
+    // Downloads the image of this person
     private void downloadImage(Person person, boolean useBig) {
         String suffix = useBig ? "JPG" : "jpg";
         String prefix = person.getPhonenumberFromatted();
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference( prefix+ "." + suffix);
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference(prefix + "." + suffix);
         File localFile = null;
         try {
-            Log.d("TAGGGGGGG", person.toString());
             localFile = File.createTempFile(prefix, suffix);
         } catch (IOException ignored) {
         }
         if (localFile != null) {
             person.setPicPath(localFile.getPath());
-            storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-                person.imageState = ImageState.COMPLETE;
-            }).addOnFailureListener(exception -> {
-                if (!useBig)
-                    downloadImage(person, true);
-                else {
-                    Log.d("MyErrorTaggy", exception.getMessage());
-                    if(exception.getMessage().equals(NO_IMG_ERROR_MSG))
-                        person.imageState = ImageState.NO_IMG;
-                    else
-                        person.imageState = ImageState.NEED_TO_DOWNLOAD; // If the image could not be loaded
-                }
-            });
+            storageRef.getFile(localFile)
+                    .addOnSuccessListener(taskSnapshot -> {
+                        person.imageState = ImageState.COMPLETE;
+                    })
+                    .addOnFailureListener(exception -> {
+                        if (!useBig)
+                            downloadImage(person, true);
+                        else {
+                            if (exception.getMessage().equals(NO_IMG_ERROR_MSG))
+                                person.imageState = ImageState.NO_IMG;
+                            else
+                                person.imageState = ImageState.NEED_TO_DOWNLOAD; // If the image could not be loaded
+                        }
+                    });
         }
     }
 
