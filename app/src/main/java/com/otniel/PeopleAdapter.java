@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -50,6 +51,7 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
             viewHolder.phone = contactView.findViewById(R.id.person_phone);
             viewHolder.image = contactView.findViewById(R.id.person_img);
             viewHolder.options = contactView.findViewById(R.id.person_menu);
+            viewHolder.layDetails = contactView.findViewById(R.id.details_layout);
             contactView.setTag(viewHolder);
         }
 
@@ -62,7 +64,7 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
         if (person.imageState != ImageState.NO_IMG)
             person.loadImage(holder.image, true);
 
-        holder.image.setOnClickListener(v -> {
+        holder.layDetails.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
             LayoutInflater inflater = ((MainActivity) context).getLayoutInflater();
@@ -154,5 +156,6 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
     class ViewHolder {
         public TextView name, phone;
         public ImageView image, options;
+        public LinearLayout layDetails;
     }
 }
