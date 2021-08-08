@@ -45,6 +45,16 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
     private PersonColor color = PersonColor.NONE;
     private String picPath;
 
+    public Uri getPicUri() {
+        return picUri;
+    }
+
+    public void setPicUri(Uri picUri) {
+        this.picUri = picUri;
+    }
+
+    private Uri picUri;
+
     public Person() {
 
     }
@@ -89,7 +99,8 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
                 surname.equals(other.surname) &&
                 phonenumber.equals(other.phonenumber) &&
                 email.equals(other.email) &&
-                imageVersion == other.imageVersion);
+                imageVersion == other.imageVersion &&
+                classIndex == other.classIndex);
     }
 
     public String getName() {
@@ -154,9 +165,9 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     public void loadImage(ImageView imgView, boolean circle) {
         if (circle)
-            Picasso.get().load("file://" + picPath).transform(new CircleTransform()).into(imgView);
+            Picasso.get().load(picUri).transform(new CircleTransform()).into(imgView);
         else
-            Picasso.get().load("file://" + picPath).into(imgView);
+            Picasso.get().load(picUri).into(imgView);
 
     }
 

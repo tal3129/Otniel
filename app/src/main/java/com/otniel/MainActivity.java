@@ -48,8 +48,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -104,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void downloadLeftImages() {
         for (Person person : people)
             if (person.imageState == ImageState.NEED_TO_DOWNLOAD)
-                downloadImage(person, false);
+                downloadImage(person);
     }
 
     // getting the people from database
@@ -124,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     // Check if there is already an old person with these details.
                     Person oldPerson = findPersonByNumber(people, newPerson.getPhonenumber());
-
 
                     // If there is no old person - the new one.
                     if (oldPerson == null || newPerson.differentFrom(oldPerson))
@@ -172,33 +169,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStop();
     }
 
-    // Download the image of this person
-    private void downloadImage(Person person, boolean useBig) {
-        String suffix = useBig ? "JPG" : "jpg";
+    // Get image uri
+    private void downloadImage(Person person) {
+        String suffix = "jpg";
         String prefix = person.getPhonenumberFromatted();
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference( prefix+ "." + suffix);
-        File localFile = null;
-        try {
-            Log.d("TAGGGGGGG", person.toString());
-            localFile = File.createTempFile(prefix, suffix);
-        } catch (IOException ignored) {
-        }
-        if (localFile != null) {
-            person.setPicPath(localFile.getPath());
-            storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-                person.imageState = ImageState.COMPLETE;
-            }).addOnFailureListener(exception -> {
-                if (!useBig)
-                    downloadImage(person, true);
-                else {
-                    Log.d("MyErrorTaggy", exception.getMessage());
-                    if(exception.getMessage().equals(NO_IMG_ERROR_MSG))
-                        person.imageState = ImageState.NO_IMG;
-                    else
-                        person.imageState = ImageState.NEED_TO_DOWNLOAD; // If the image could not be loaded
-                }
-            });
-        }
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference(prefix + "." + suffix);
+        storageRef.getDownloadUrl().addOnSuccessListener((Uri uri) -> {
+            person.setPicUri(uri);
+            person.imageState = ImageState.COMPLETE;
+        });
     }
 
     @Override
