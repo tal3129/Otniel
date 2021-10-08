@@ -55,13 +55,14 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     final static int EVERYONE = 8;
-    final static String NO_IMG_ERROR_MSG = "Object does not exist at location.";
 
     public static boolean call = true;
     public static HashMap<Integer, String> lookupKeys = new HashMap<>();
     private static String query = "";
     int currentIndex = 8;
-    ArrayList<Person> people = new ArrayList<>();
+
+    public static ArrayList<Person> people = new ArrayList<>();
+
     ArrayList<Person> currentPeople = new ArrayList<>();
 
     ArrayList<Person> databasePeople = new ArrayList<>();
@@ -93,111 +94,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getDataFromSP();
 
-        downloadLeftImages();
+        DatabaseManager manager = new DatabaseManager();
 
-        getPeopleFromFB();
+        manager.downloadLeftImages();
+
+        manager.getPeopleFromFB();
     }
 
-    // Goes through the current people, downloads images of people
-    private void downloadLeftImages() {
-        for (Person person : people)
-            if (person.imageState == ImageState.NEED_TO_DOWNLOAD)
-                downloadImage(person, false);
-    }
 
-    // getting the people from database
-    private void getPeopleFromFB() {
-        DatabaseReference peopleRef = FirebaseDatabase.getInstance().getReference().child("People");
-        peopleRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // First, we have the old people list.
-                databasePeople.clear();
-
-                // Now, we Iterate through the downloaded people.
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Person newPerson = snapshot.getValue(Person.class);
-                    if (newPerson == null)
-                        continue;
-
-                    // Check if there is already an old person with these details.
-                    Person oldPerson = findPersonByNumber(people, newPerson.getPhonenumber());
-
-
-                    // If there is no old person - the new one.
-                    if (oldPerson == null || newPerson.differentFrom(oldPerson))
-                        databasePeople.add(newPerson);
-                        // If there is there is an old person, and it is identical
-                    else
-                        databasePeople.add(oldPerson);
-
-                }
-                people.clear();
-                people.addAll(databasePeople);
-                downloadLeftImages();
-                changeIndex(EVERYONE);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-    }
-
-    // getting the people from the device;
-    private void getDataFromSP() {
-        SharedPreferences sp = getPreferences(MODE_PRIVATE);
-        String appDataJson = sp.getString("appDataJson", "NO_DATA");
-        Gson gson = new Gson();
-        if (!appDataJson.equals("NO_DATA")) {
-            AppData data = gson.fromJson(appDataJson, AppData.class);
-            devicePeople = data.people;
-            spVersion = data.version;
-        }
-
-        people = devicePeople;
-        currentPeople.addAll(people);
-        changeIndex(EVERYONE);
-    }
 
     // when the download was finished, update the people on the device.
     @Override
     public void onStop() {
         SharedPreferences.Editor sp = getPreferences(MODE_PRIVATE).edit();
-        AppData data = new AppData(people, Math.max(spVersion, fbVersion));
+        DatabaseManager.AppData data = new DatabaseManager.AppData(people, Math.max(spVersion, fbVersion));
         sp.putString("appDataJson", (new Gson()).toJson(data));
         sp.apply();
         super.onStop();
     }
 
-    // Downloads the image of this person
-    private void downloadImage(Person person, boolean useBig) {
-        String suffix = useBig ? "JPG" : "jpg";
-        String prefix = person.getPhonenumberFromatted();
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference(prefix + "." + suffix);
-        File localFile = null;
-        try {
-            localFile = File.createTempFile(prefix, suffix);
-        } catch (IOException ignored) {
-        }
-        if (localFile != null) {
-            person.setPicPath(localFile.getPath());
-            storageRef.getFile(localFile)
-                    .addOnSuccessListener(taskSnapshot -> {
-                        person.imageState = ImageState.COMPLETE;
-                    })
-                    .addOnFailureListener(exception -> {
-                        if (!useBig)
-                            downloadImage(person, true);
-                        else {
-                            if (exception.getMessage().equals(NO_IMG_ERROR_MSG))
-                                person.imageState = ImageState.NO_IMG;
-                            else
-                                person.imageState = ImageState.NEED_TO_DOWNLOAD; // If the image could not be loaded
-                        }
-                    });
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -521,24 +436,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             Toast.makeText(this, "הפעולה המבוקשת לא יכולה להתבצע ללא הרשאה זו", Toast.LENGTH_LONG).show();
 
-        }
-    }
-
-    public Person findPersonByNumber(ArrayList<Person> persons, String phone) {
-        for (Person p : persons) {
-            if (p.getPhonenumber().equals(phone))
-                return p;
-        }
-        return null;
-    }
-
-    class AppData {
-        ArrayList<Person> people;
-        int version;
-
-        public AppData(ArrayList<Person> devicePeople, int version) {
-            this.people = devicePeople;
-            this.version = version;
         }
     }
 }

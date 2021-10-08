@@ -406,4 +406,12 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
             return values()[0];
         }
     }
+
+    public static Person findPersonByNumber(ArrayList<Person> persons, String phone) {
+        for (Person p : persons) {
+            if (p.getPhonenumber().equals(phone))
+                return p;
+        }
+        return null;
+    }
 }
