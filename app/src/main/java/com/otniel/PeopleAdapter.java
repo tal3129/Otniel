@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup containter) {
 
         View contactView = convertView;
         // reuse views
@@ -59,8 +60,12 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
 
         PeopleAdapter.ViewHolder holder = (PeopleAdapter.ViewHolder) contactView.getTag();
 
-        holder.image.setImageResource(R.drawable.contact);
-        Picasso.get().load(R.drawable.contact).transform(new CircleTransform()).into(holder.image);
+        Glide.with(context)
+                .load(person.getPicReference())
+                .placeholder(R.drawable.contact)
+                .circleCrop()
+                .into(holder.image);
+        // Picasso.get().load(R.drawable.contact).transform(new CircleTransform()).into(holder.image);
         if (person.imageState != ImageState.NO_IMG)
             person.loadImage(holder.image, true);
 

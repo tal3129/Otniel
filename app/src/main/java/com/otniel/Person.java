@@ -16,6 +16,9 @@ import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
@@ -45,9 +48,20 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
     private PersonColor color = PersonColor.NONE;
     private String picPath;
 
+    public StorageReference getPicReference() {
+        return picReference;
+    }
+
+    public void setPicReference(StorageReference picReference) {
+        this.picReference = picReference;
+    }
+
+    private StorageReference picReference;
+
     public Person() {
 
     }
+
 
     public static void deleteContactAuto(String lookupKey) {
         ContentResolver cr = context.getContentResolver();
@@ -130,6 +144,10 @@ public class Person implements Comparable<Person>, android.widget.PopupMenu.OnMe
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+        String suffix = "jpg";
+        String prefix = this.getPhonenumberFromatted();
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference(prefix + "." + suffix);
+        this.picReference = storageRef;
     }
 
     public String getPhonenumberFromatted() {

@@ -38,6 +38,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,8 +48,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -91,18 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Person.context = this;
 
-        getDataFromSP();
-
-        downloadLeftImages();
-
         getPeopleFromFB();
-    }
-
-    // Goes through the current people, downloads images of people
-    private void downloadLeftImages() {
-        for (Person person : people)
-            if (person.imageState == ImageState.NEED_TO_DOWNLOAD)
-                downloadImage(person, false);
     }
 
     // getting the people from database
@@ -123,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     // Check if there is already an old person with these details.
                     Person oldPerson = findPersonByNumber(people, newPerson.getPhonenumber());
 
-
                     // If there is no old person - the new one.
                     if (oldPerson == null || newPerson.differentFrom(oldPerson))
                         databasePeople.add(newPerson);
@@ -134,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 people.clear();
                 people.addAll(databasePeople);
-                downloadLeftImages();
                 changeIndex(EVERYONE);
             }
 
@@ -142,61 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-    }
-
-    // getting the people from the device;
-    private void getDataFromSP() {
-        SharedPreferences sp = getPreferences(MODE_PRIVATE);
-        String appDataJson = sp.getString("appDataJson", "NO_DATA");
-        Gson gson = new Gson();
-        if (!appDataJson.equals("NO_DATA")) {
-            AppData data = gson.fromJson(appDataJson, AppData.class);
-            devicePeople = data.people;
-            spVersion = data.version;
-        }
-
-        people = devicePeople;
-        currentPeople.addAll(people);
-        changeIndex(EVERYONE);
-    }
-
-    // when the download was finished, update the people on the device.
-    @Override
-    public void onStop() {
-        SharedPreferences.Editor sp = getPreferences(MODE_PRIVATE).edit();
-        AppData data = new AppData(people, Math.max(spVersion, fbVersion));
-        sp.putString("appDataJson", (new Gson()).toJson(data));
-        sp.apply();
-        super.onStop();
-    }
-
-    // Downloads the image of this person
-    private void downloadImage(Person person, boolean useBig) {
-        String suffix = useBig ? "JPG" : "jpg";
-        String prefix = person.getPhonenumberFromatted();
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference(prefix + "." + suffix);
-        File localFile = null;
-        try {
-            localFile = File.createTempFile(prefix, suffix);
-        } catch (IOException ignored) {
-        }
-        if (localFile != null) {
-            person.setPicPath(localFile.getPath());
-            storageRef.getFile(localFile)
-                    .addOnSuccessListener(taskSnapshot -> {
-                        person.imageState = ImageState.COMPLETE;
-                    })
-                    .addOnFailureListener(exception -> {
-                        if (!useBig)
-                            downloadImage(person, true);
-                        else {
-                            if (exception.getMessage().equals(NO_IMG_ERROR_MSG))
-                                person.imageState = ImageState.NO_IMG;
-                            else
-                                person.imageState = ImageState.NEED_TO_DOWNLOAD; // If the image could not be loaded
-                        }
-                    });
-        }
     }
 
     @Override
